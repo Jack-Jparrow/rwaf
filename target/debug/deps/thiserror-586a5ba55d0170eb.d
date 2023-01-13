@@ -1,0 +1,7 @@
+/home/jack/Desktop/rust/rwaf/target/debug/deps/thiserror-586a5ba55d0170eb.rmeta: /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/thiserror-1.0.38/src/lib.rs /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/thiserror-1.0.38/src/aserror.rs /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/thiserror-1.0.38/src/display.rs
+
+/home/jack/Desktop/rust/rwaf/target/debug/deps/thiserror-586a5ba55d0170eb.d: /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/thiserror-1.0.38/src/lib.rs /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/thiserror-1.0.38/src/aserror.rs /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/thiserror-1.0.38/src/display.rs
+
+/root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/thiserror-1.0.38/src/lib.rs:
+/root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/thiserror-1.0.38/src/aserror.rs:
+/root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/thiserror-1.0.38/src/display.rs:

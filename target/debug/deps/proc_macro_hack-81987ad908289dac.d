@@ -1,0 +1,9 @@
+/home/jack/Desktop/rust/rwaf/target/debug/deps/libproc_macro_hack-81987ad908289dac.so: /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/proc-macro-hack-0.5.20+deprecated/src/lib.rs /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/proc-macro-hack-0.5.20+deprecated/src/quote.rs /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/proc-macro-hack-0.5.20+deprecated/src/error.rs /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/proc-macro-hack-0.5.20+deprecated/src/iter.rs /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/proc-macro-hack-0.5.20+deprecated/src/parse.rs
+
+/home/jack/Desktop/rust/rwaf/target/debug/deps/proc_macro_hack-81987ad908289dac.d: /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/proc-macro-hack-0.5.20+deprecated/src/lib.rs /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/proc-macro-hack-0.5.20+deprecated/src/quote.rs /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/proc-macro-hack-0.5.20+deprecated/src/error.rs /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/proc-macro-hack-0.5.20+deprecated/src/iter.rs /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/proc-macro-hack-0.5.20+deprecated/src/parse.rs
+
+/root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/proc-macro-hack-0.5.20+deprecated/src/lib.rs:
+/root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/proc-macro-hack-0.5.20+deprecated/src/quote.rs:
+/root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/proc-macro-hack-0.5.20+deprecated/src/error.rs:
+/root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/proc-macro-hack-0.5.20+deprecated/src/iter.rs:
+/root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/proc-macro-hack-0.5.20+deprecated/src/parse.rs:
