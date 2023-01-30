@@ -1,0 +1,10 @@
+/home/jack/Desktop/rust/rwaf/target/debug/deps/os_str_bytes-aa770c869805b07d.rmeta: /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/os_str_bytes-6.4.1/src/lib.rs /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/os_str_bytes-6.4.1/src/common/mod.rs /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/os_str_bytes-6.4.1/src/common/raw.rs /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/os_str_bytes-6.4.1/src/iter.rs /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/os_str_bytes-6.4.1/src/pattern.rs /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/os_str_bytes-6.4.1/src/raw_str.rs
+
+/home/jack/Desktop/rust/rwaf/target/debug/deps/os_str_bytes-aa770c869805b07d.d: /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/os_str_bytes-6.4.1/src/lib.rs /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/os_str_bytes-6.4.1/src/common/mod.rs /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/os_str_bytes-6.4.1/src/common/raw.rs /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/os_str_bytes-6.4.1/src/iter.rs /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/os_str_bytes-6.4.1/src/pattern.rs /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/os_str_bytes-6.4.1/src/raw_str.rs
+
+/root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/os_str_bytes-6.4.1/src/lib.rs:
+/root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/os_str_bytes-6.4.1/src/common/mod.rs:
+/root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/os_str_bytes-6.4.1/src/common/raw.rs:
+/root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/os_str_bytes-6.4.1/src/iter.rs:
+/root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/os_str_bytes-6.4.1/src/pattern.rs:
+/root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/os_str_bytes-6.4.1/src/raw_str.rs:

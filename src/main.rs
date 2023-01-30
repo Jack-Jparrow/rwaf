@@ -1,7 +1,7 @@
 //! @Author       : 白银
 //! @Date         : 2023-01-11 20:42:38
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-01-13 19:47:01
+//! @LastEditTime : 2023-01-29 20:24:17
 //! @FilePath     : /rwaf/src/main.rs
 //! @Description  : 
 //! @Attention    : 
@@ -15,7 +15,18 @@ mod module;
 
 fn main() {
     // println!("Hello, world!");
-    module::warning::a::hello();
+    // loop {
+    //     println!("{:?}", module::warning::a::get_available_port());
+    // }
+    // module::warning::zhuabao::dofunc();
+    // module::counterattack::syn_flood::start_syn();
+    module::protect::watch_memory::output_get_mem_state();
+    // println!("{:?}", res);
+    // sql_check();
+    
+}
+
+fn sql_check(){
     let mut id = String::new();
     io::stdin().read_line(&mut id).expect("err");
     // let id = String::from("root");

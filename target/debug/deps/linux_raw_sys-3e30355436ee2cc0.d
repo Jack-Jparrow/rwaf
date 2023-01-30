@@ -1,0 +1,10 @@
+/home/jack/Desktop/rust/rwaf/target/debug/deps/linux_raw_sys-3e30355436ee2cc0.rmeta: /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/linux-raw-sys-0.1.4/src/lib.rs /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/linux-raw-sys-0.1.4/src/x86_64/errno.rs /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/linux-raw-sys-0.1.4/src/x86_64/general.rs /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/linux-raw-sys-0.1.4/src/x86_64/ioctl.rs
+
+/home/jack/Desktop/rust/rwaf/target/debug/deps/liblinux_raw_sys-3e30355436ee2cc0.rlib: /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/linux-raw-sys-0.1.4/src/lib.rs /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/linux-raw-sys-0.1.4/src/x86_64/errno.rs /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/linux-raw-sys-0.1.4/src/x86_64/general.rs /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/linux-raw-sys-0.1.4/src/x86_64/ioctl.rs
+
+/home/jack/Desktop/rust/rwaf/target/debug/deps/linux_raw_sys-3e30355436ee2cc0.d: /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/linux-raw-sys-0.1.4/src/lib.rs /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/linux-raw-sys-0.1.4/src/x86_64/errno.rs /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/linux-raw-sys-0.1.4/src/x86_64/general.rs /root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/linux-raw-sys-0.1.4/src/x86_64/ioctl.rs
+
+/root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/linux-raw-sys-0.1.4/src/lib.rs:
+/root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/linux-raw-sys-0.1.4/src/x86_64/errno.rs:
+/root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/linux-raw-sys-0.1.4/src/x86_64/general.rs:
+/root/.cargo/registry/src/mirrors.tuna.tsinghua.edu.cn-df7c3c540f42cdbd/linux-raw-sys-0.1.4/src/x86_64/ioctl.rs:
