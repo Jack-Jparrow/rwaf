@@ -1,0 +1,3 @@
+cargo:rerun-if-env-changed=LIBPCAP_LIBDIR
+cargo:rerun-if-env-changed=LIBPCAP_VER
+cargo:rustc-link-lib=pcap
