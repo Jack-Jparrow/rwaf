@@ -9,4 +9,6 @@
 -->
 # waf based on rust
 
-`bison`&&`flex`&&`libpcap` needed
+`openssl`&`bison`&`flex`&`libpcap` needed
+
+```rustup toolchain install nightly```
