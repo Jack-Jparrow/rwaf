@@ -9,4 +9,4 @@
 -->
 # waf based on rust
 
-`libpcap` needed
+`bison`&&`flex`&&`libpcap` needed
