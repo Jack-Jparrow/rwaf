@@ -8,3 +8,5 @@
  * @FilePath: /rwaf/README.md
 -->
 # waf based on rust
+
+`bison`&&`flex`&&`libpcap` needed
