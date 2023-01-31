@@ -1,0 +1,1 @@
+cat /proc/diskstats | awk 'BEGIN {max = 0} {if ($4+0 > max+0) {max=$4 ;content=$0} } END {print content}'| awk '{print $13}'; sleep 0.2; cat /proc/diskstats | awk 'BEGIN {max = 0} {if ($4+0 > max+0) {max=$4 ;content=$0} } END {print content}'| awk '{print $13}'

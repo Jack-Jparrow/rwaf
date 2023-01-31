@@ -1,7 +1,7 @@
 //! @Author       : 白银
 //! @Date         : 2023-01-11 20:42:38
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-01-29 20:24:17
+//! @LastEditTime : 2023-01-30 22:23:21
 //! @FilePath     : /rwaf/src/main.rs
 //! @Description  : 
 //! @Attention    : 
@@ -20,7 +20,11 @@ fn main() {
     // }
     // module::warning::zhuabao::dofunc();
     // module::counterattack::syn_flood::start_syn();
-    module::protect::watch_memory::output_get_mem_state();
+    // module::protect::watch::watch_memory::output_get_mem_state();
+    // module::protect::watch::watch_cpu::output_get_cpu_state();
+    // module::protect::watch::watch_time::output_get_time();
+    // module::protect::watch::watch_date::output_get_day_state();
+    module::protect::show_watch_res::show_watch_res_main();
     // println!("{:?}", res);
     // sql_check();
     
