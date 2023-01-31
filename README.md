@@ -8,3 +8,7 @@
  * @FilePath: /rwaf/README.md
 -->
 # waf based on rust
+
+`openssl`&`bison`&`flex`&`libpcap` needed
+
+```rustup toolchain install nightly```
