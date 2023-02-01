@@ -1,7 +1,7 @@
 //! @Author       : 白银
 //! @Date         : 2023-01-11 20:42:38
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-01-30 22:23:21
+//! @LastEditTime : 2023-02-01 21:14:27
 //! @FilePath     : /rwaf/src/main.rs
 //! @Description  : 
 //! @Attention    : 
@@ -9,7 +9,7 @@
 
 use mysql::prelude::*;
 use mysql::*;
-use std::io;
+use std::{io, thread};
 
 mod module;
 
@@ -24,7 +24,13 @@ fn main() {
     // module::protect::watch::watch_cpu::output_get_cpu_state();
     // module::protect::watch::watch_time::output_get_time();
     // module::protect::watch::watch_date::output_get_day_state();
-    module::protect::show_watch_res::show_watch_res_main();
+    // module::protect::show_watch_res::show_watch_res_main();
+    // module::protect::make_bak::use_start_make_bak();
+    // module::protect::make_bak::start_make_bak();
+    module::restore::make_restore::start_make_restore();
+
+    // thread::spawn(module::protect::show_watch_res::show_watch_res_main).join();
+    // thread::spawn(module::restore::make_restore::start_make_restore);
     // println!("{:?}", res);
     // sql_check();
     

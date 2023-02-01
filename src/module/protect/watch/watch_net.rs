@@ -1,11 +1,11 @@
 //! @Author       : 白银
 //! @Date         : 2023-01-31 19:59:07
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-01-31 20:50:13
+//! @LastEditTime : 2023-02-01 15:18:53
 //! @FilePath     : /rwaf/src/module/protect/watch/watch_net.rs
 //! @Description  : 获取带宽使用情况
 //! @Attention    : 获取到两行信息，第一行开始，第二行结束，每行空格隔开前为发送，后为接收
-//! @Copyright (c) 2023 by ${git_name_email}, All Rights Reserved.
+//! @Copyright (c) 2023 by Jack-Jparrow captain-jparrow@qq.com, All Rights Reserved.
 
 use std::process::Command;
 

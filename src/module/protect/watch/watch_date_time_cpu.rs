@@ -5,7 +5,7 @@
 //! @FilePath     : /rwaf/src/module/protect/watch/watch_date_time_cpu.rs
 //! @Description  : cpu占用率
 //! @Attention    : 获取到三行信息，要最后一行，awk结果再去空格切片
-//! @Copyright (c) 2023 by ${git_name_email}, All Rights Reserved.
+//! @Copyright (c) 2023 by Jack-Jparrow captain-jparrow@qq.com, All Rights Reserved.
 
 use std::process::{Command, Stdio};
 
