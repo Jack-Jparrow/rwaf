@@ -1,11 +1,11 @@
 //! @Author       : 白银
 //! @Date         : 2023-01-11 20:42:38
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-02-01 21:14:27
+//! @LastEditTime : 2023-02-02 17:03:01
 //! @FilePath     : /rwaf/src/main.rs
 //! @Description  : 
 //! @Attention    : 
-//! @Copyright (c) 2023 by Jack-Jparrow captain-jparrow@qq.com, All Rights Reserved. 
+//! @Copyright (c) 2023 by 白银 captain-jparrow@qq.com, All Rights Reserved. 
 
 use mysql::prelude::*;
 use mysql::*;
@@ -27,7 +27,8 @@ fn main() {
     // module::protect::show_watch_res::show_watch_res_main();
     // module::protect::make_bak::use_start_make_bak();
     // module::protect::make_bak::start_make_bak();
-    module::restore::make_restore::start_make_restore();
+    // module::restore::make_restore::start_make_restore();
+    module::detect::check_web_shell::start_check_web_shell();
 
     // thread::spawn(module::protect::show_watch_res::show_watch_res_main).join();
     // thread::spawn(module::restore::make_restore::start_make_restore);

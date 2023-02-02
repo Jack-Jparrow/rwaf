@@ -5,7 +5,7 @@
 //! @FilePath     : /rwaf/src/module/protect/watch/watch_memory.rs
 //! @Description  : 
 //! @Attention    : 
-//! @Copyright (c) 2023 by Jack-Jparrow captain-jparrow@qq.com, All Rights Reserved. 
+//! @Copyright (c) 2023 by 白银 captain-jparrow@qq.com, All Rights Reserved. 
 //! @Author       : 白银
 //! @Date         : 2023-01-29 19:14:02
 //! @LastEditors  : 白银
@@ -13,7 +13,7 @@
 //! @FilePath     : /rwaf/src/module/protect/watch/watch_memory.rs
 //! @Description  : 内存占用率
 //! @Attention    :
-//! @Copyright (c) 2023 by Jack-Jparrow captain-jparrow@qq.com, All Rights Reserved.
+//! @Copyright (c) 2023 by 白银 captain-jparrow@qq.com, All Rights Reserved.
 
 use std::process::{Command, Stdio};
 

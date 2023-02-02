@@ -5,7 +5,7 @@
 //! @FilePath     : /rwaf/src/module/protect/watch/watch_disk.rs
 //! @Description  : 磁盘%util指标
 //! @Attention    : ioRate计算方法：https://zhuanlan.zhihu.com/p/60000317
-//! @Copyright (c) 2023 by Jack-Jparrow captain-jparrow@qq.com, All Rights Reserved. 
+//! @Copyright (c) 2023 by 白银 captain-jparrow@qq.com, All Rights Reserved. 
 
 use std::process::Command;
 

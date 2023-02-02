@@ -5,5 +5,5 @@
 //! @FilePath     : /rwaf/src/module/counterattack/mod.rs
 //! @Description  : 
 //! @Attention    : 
-//! @Copyright (c) 2023 by Jack-Jparrow captain-jparrow@qq.com, All Rights Reserved. 
+//! @Copyright (c) 2023 by 白银 captain-jparrow@qq.com, All Rights Reserved. 
 pub mod syn_flood;

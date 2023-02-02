@@ -5,7 +5,7 @@
 //! @FilePath     : /rwaf/src/module/protect/watch/mod.rs
 //! @Description  : 
 //! @Attention    : 
-//! @Copyright (c) 2023 by Jack-Jparrow captain-jparrow@qq.com, All Rights Reserved. 
+//! @Copyright (c) 2023 by 白银 captain-jparrow@qq.com, All Rights Reserved. 
 
 pub mod watch_memory;
 pub mod watch_date_time_cpu;

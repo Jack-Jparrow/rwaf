@@ -5,7 +5,7 @@
 //! @FilePath     : /rwaf/src/module/protect/watch/watch_net.rs
 //! @Description  : 获取带宽使用情况
 //! @Attention    : 获取到两行信息，第一行开始，第二行结束，每行空格隔开前为发送，后为接收
-//! @Copyright (c) 2023 by Jack-Jparrow captain-jparrow@qq.com, All Rights Reserved.
+//! @Copyright (c) 2023 by 白银 captain-jparrow@qq.com, All Rights Reserved.
 
 use std::process::Command;
 

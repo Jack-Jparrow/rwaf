@@ -2,11 +2,11 @@
  * @Author       : 白银
  * @Date         : 2023-01-31 21:22:22
  * @LastEditors  : 白银
- * @LastEditTime : 2023-02-01 21:16:13
+ * @LastEditTime : 2023-02-01 21:43:27
  * @FilePath     : /rwaf/README.md
  * @Description  : 
  * @Attention    : 
- * @Copyright (c) 2023 by Jack-Jparrow captain-jparrow@qq.com, All Rights Reserved.
+ * @Copyright (c) 2023 by 白银 captain-jparrow@qq.com, All Rights Reserved.
 -->
 
 # waf based on rust
@@ -15,4 +15,4 @@
 
 ```rustup toolchain install nightly```
 
-make sure that you're able to connect to the bak_server by `ssh-key` before using the `restore` module
+make sure that you've been able to connect to the bak_server by `ssh-key` before using the `restore` module

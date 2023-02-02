@@ -5,7 +5,7 @@
 //! @FilePath     : /rwaf/src/module/protect/show_watch_res.rs
 //! @Description  :
 //! @Attention    :
-//! @Copyright (c) 2023 by Jack-Jparrow captain-jparrow@qq.com, All Rights Reserved.
+//! @Copyright (c) 2023 by 白银 captain-jparrow@qq.com, All Rights Reserved.
 
 use std::thread;
 

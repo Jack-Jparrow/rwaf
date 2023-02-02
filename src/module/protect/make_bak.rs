@@ -5,7 +5,7 @@
 //! @FilePath     : /rwaf/src/module/protect/make_bak.rs
 //! @Description  : 备份文件
 //! @Attention    :
-//! @Copyright (c) 2023 by Jack-Jparrow captain-jparrow@qq.com, All Rights Reserved.
+//! @Copyright (c) 2023 by 白银 captain-jparrow@qq.com, All Rights Reserved.
 
 use std::{thread, time::Duration};
 

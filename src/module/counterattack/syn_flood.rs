@@ -5,7 +5,7 @@
 //! @FilePath     : /csyx/src/learn/syn_flood.rs
 //! @Description  :
 //! @Attention    :
-//! @Copyright (c) 2023 by Jack-Jparrow captain-jparrow@qq.com, All Rights Reserved.
+//! @Copyright (c) 2023 by 白银 captain-jparrow@qq.com, All Rights Reserved.
 
 use pnet::packet::{
     ip::*,

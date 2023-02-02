@@ -5,7 +5,7 @@
 //! @FilePath     : /rwaf/src/module/restore/make_restore.rs
 //! @Description  : 从备份服务器恢复
 //! @Attention    :
-//! @Copyright (c) 2023 by Jack-Jparrow captain-jparrow@qq.com, All Rights Reserved.
+//! @Copyright (c) 2023 by 白银 captain-jparrow@qq.com, All Rights Reserved.
 
 pub fn start_make_restore() {
     let dst_path = "/home/jack/Desktop/pwm";
