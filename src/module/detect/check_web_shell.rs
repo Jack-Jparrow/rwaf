@@ -1,18 +1,23 @@
 //! @Author       : 白银
 //! @Date         : 2023-02-02 16:55:54
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-02-02 19:32:38
+//! @LastEditTime : 2023-02-03 17:11:24
 //! @FilePath     : /rwaf/src/module/detect/check_web_shell.rs
-//! @Description  : 
-//! @Attention    : 
-//! @Copyright (c) 2023 by 白银 captain-jparrow@qq.com, All Rights Reserved. 
+//! @Description  :
+//! @Attention    :
+//! @Copyright (c) 2023 by 白银 captain-jparrow@qq.com, All Rights Reserved.
 
-use std::{fs::{File, self}, io::Read, path::Path};
+use std::{
+    fs::{self, File},
+    io::Read,
+    path::Path,
+};
 
 use execute::Execute;
+use lettre::{transport::smtp::authentication::Credentials, Message, SmtpTransport, Transport};
 
 pub fn start_check_web_shell() {
-    let dst_path = "/home/jack/Desktop/aaaa".to_string();
+    let dst_path = "/home/jack/Desktop/pwn".to_string();
     // let src_ip = "129.226.211.132";
     // let src_username = "root";
     // let src_path = "/home/lighthouse/pwn";
@@ -57,7 +62,22 @@ pub fn start_check_web_shell() {
     let dan_log_size = fs::metadata("src/module/detect/dan.log").unwrap().len();
 
     if dan_log_size > 0 {
-        send_email();
+        let sender_address = "rwaf <jj1017708679@126.com>".to_string(); //like: NoBody <nobody@domain.tld>
+        let receiver_address = "Jack Jparrow <captain-jparrow@qq.com>".to_string(); //like: NoBody <nobody@domain.tld>
+        let mail_body =
+            dan_log_content + &"\n\n" + &"sent by rwaf(https://github.com/Jack-Jparrow/rwaf.git)";
+        let email_username = "jj1017708679@126.com".to_string(); //邮箱登陆用户名，like: nobody@domain.tld
+        let email_passwd = "H20080808".to_string(); //邮箱登陆密码
+        let smtp_address = "smtp.126.com"; //邮箱smtp地址
+
+        send_email(
+            sender_address,
+            receiver_address,
+            mail_body,
+            email_username,
+            email_passwd,
+            smtp_address,
+        );
     }
     // println!("{}", dan_log_size);
     // let len_n = len.to_string();
@@ -78,7 +98,7 @@ pub fn start_check_web_shell() {
 //     execute::shell(fin_shell);
 // }
 
-fn check_web_shell(program_name: String, use_script: String, dst_path: String){
+fn check_web_shell(program_name: String, use_script: String, dst_path: String) {
     let mut command = execute::command_args!(program_name, use_script, dst_path);
     let output = command.execute_output().unwrap();
 
@@ -112,6 +132,29 @@ fn rm_rf_dan_log(log_path: String) {
     // println!("{:?}", );
 }
 
-fn send_email(){
-    todo!()
+fn send_email(
+    sender_address: String,
+    receiver_address: String,
+    mail_body: String,
+    email_username: String,
+    email_passwd: String,
+    smtp_address: &str,
+) {
+    let email = Message::builder()
+        .from(sender_address.parse().unwrap())
+        .to(receiver_address.parse().unwrap())
+        .subject("webshell")
+        .body(mail_body)
+        .unwrap();
+    let creds = Credentials::new(email_username, email_passwd);
+
+    let mailer = SmtpTransport::relay(smtp_address)
+        .unwrap()
+        .credentials(creds)
+        .build();
+
+    match mailer.send(&email) {
+        Ok(_) => println!("Email sent successfully!"),
+        Err(e) => panic!("Could not send email: {:?}", e),
+    }
 }
