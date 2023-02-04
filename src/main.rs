@@ -1,7 +1,7 @@
 //! @Author       : 白银
 //! @Date         : 2023-01-11 20:42:38
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-02-02 17:03:01
+//! @LastEditTime : 2023-02-04 16:22:31
 //! @FilePath     : /rwaf/src/main.rs
 //! @Description  : 
 //! @Attention    : 
@@ -28,7 +28,8 @@ fn main() {
     // module::protect::make_bak::use_start_make_bak();
     // module::protect::make_bak::start_make_bak();
     // module::restore::make_restore::start_make_restore();
-    module::detect::check_web_shell::start_check_web_shell();
+    // module::detect::check_web_shell::start_check_web_shell();
+    module::respond::stop_ddos::stop_ddos();
 
     // thread::spawn(module::protect::show_watch_res::show_watch_res_main).join();
     // thread::spawn(module::restore::make_restore::start_make_restore);

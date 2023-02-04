@@ -1,7 +1,7 @@
 //! @Author       : 白银
 //! @Date         : 2023-02-01 19:41:02
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-02-01 20:19:41
+//! @LastEditTime : 2023-02-04 16:16:44
 //! @FilePath     : /rwaf/src/module/protect/make_bak.rs
 //! @Description  : 备份文件
 //! @Attention    :
@@ -36,7 +36,7 @@ pub fn start_make_bak() {
 }
 
 fn make_bak(fin_shell: String) {
-    execute::shell(fin_shell);
+    let mut command = execute::shell(fin_shell);
 }
 
 // fn make_bak(fin_shell: String) {
