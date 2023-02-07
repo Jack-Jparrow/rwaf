@@ -2,7 +2,7 @@
  * @Author       : 白银
  * @Date         : 2023-01-31 21:22:22
  * @LastEditors  : 白银
- * @LastEditTime : 2023-02-07 19:44:28
+ * @LastEditTime : 2023-02-07 19:45:32
  * @FilePath     : /rwaf/README.md
  * @Description  : 
  * @Attention    : 
@@ -12,6 +12,7 @@
 # waf based on rust
 
 `openssl`&`bison`&`flex`&`libpcap` needed
+
 `iptables`|`firewalld` needed
 
 ```rustup toolchain install nightly```
