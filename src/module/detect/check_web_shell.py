@@ -79,14 +79,14 @@ def Scan(path):
             if '.' in filespath:
                 ext = filespath[(filespath.rindex('.')+1):]
                 if ext == "html" or ext == "htm" or ext == "php" or ext == "php3" or ext == "php4" or ext == "php5" or ext == "asp" or ext == "aspx" or ext == "jsp" or ext == "jspx" or ext == "cfm":#and filespath not in pass_file:
-                    file = open(os.path.join(root, filespath), encoding='Utf-8')
-                    file2 = open("src/module/detect/dan.log", "a", encoding='Utf-8')
+                    file = open(os.path.join(root, filespath), encoding = 'Utf-8')
+                    file2 = open("src/module/detect/dan.log", "a", encoding = 'Utf-8')
                     filestr = file.read()
                     file.close()
                     for rule in rulelist:
                         result = re.compile(rule).findall(filestr)
                         if result:
-                            # file = open("src/module/detect/dan.log", "a", encoding='Utf-8')
+                            # file = open("src/module/detect/dan.log", "a", encoding = 'Utf-8')
                             wr = str("文件：" + os.path.join(root, filespath) + "\n" + "恶意代码：" + str(result[0]) + "\n")
                             file2.write(wr)
                             file2.close()

