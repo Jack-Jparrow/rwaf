@@ -11,11 +11,9 @@
 
 # waf based on rust
 
-`openssl`&`bison`&`flex`&`libpcap`&`python-requests` needed
+`openssl`&`bison`&`flex`&`libpcap`&`python-requests`&`sqlmap` needed
 
 `iptables`|`firewalld` needed
-
-`sqlmap` needed and must in `environment variable`
 
 ```rustup toolchain install nightly```
 

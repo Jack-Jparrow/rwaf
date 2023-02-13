@@ -1511,6 +1511,7 @@ dependencies = [
  "pnet",
  "pnet_transport",
  "rand",
+ "regex",
 ]
 
 [[package]]
