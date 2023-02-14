@@ -1,9 +1,9 @@
 //! @Author       : 白银
 //! @Date         : 2023-02-12 18:56:47
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-02-14 15:31:50
+//! @LastEditTime : 2023-02-14 19:17:19
 //! @FilePath     : /rwaf/src/module/warning/port_sql_xss.rs
-//! @Description  :
+//! @Description  : 一次性任务，运行检查
 //! @Attention    :
 //! @Copyright (c) 2023 by 白银 captain-jparrow@qq.com, All Rights Reserved.
 
@@ -118,7 +118,7 @@ fn get_only_url() -> String {
     let binding2 = res1.clone()[1]; //get line
     let binding3 = binding2.to_string();
     let res2: Vec<&str> = binding3.split("→").collect(); //get left
-    let binding4 = res2.clone()[1]; //get left
+    let binding4 = res2.clone()[0]; //get left
     let binding5 = binding4.to_string();
     let real_res_tmp = get_url(&binding5); //get http.......
 
