@@ -2,7 +2,7 @@
  * @Author       : 白银
  * @Date         : 2023-01-31 21:22:22
  * @LastEditors  : 白银
- * @LastEditTime : 2023-02-12 15:20:20
+ * @LastEditTime : 2023-02-14 20:36:20
  * @FilePath     : /rwaf/README.md
  * @Description  : 
  * @Attention    : 
@@ -18,3 +18,7 @@
 ```rustup toolchain install nightly```
 
 make sure that you've been able to connect to the bak_server by `ssh-key` before using the `restore` module
+
+**This is a graduation project from [School of Computer Science of THNU](https://jsjxy.thnu.edu.cn)**
+
+***Not yet completed, under development***
