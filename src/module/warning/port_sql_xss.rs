@@ -1,7 +1,7 @@
 //! @Author       : 白银
 //! @Date         : 2023-02-12 18:56:47
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-02-13 18:34:56
+//! @LastEditTime : 2023-02-14 15:31:50
 //! @FilePath     : /rwaf/src/module/warning/port_sql_xss.rs
 //! @Description  :
 //! @Attention    :
@@ -115,14 +115,13 @@ fn get_only_url() -> String {
 
     let binding = config_content;
     let res1: Vec<&str> = binding.split("\n").collect(); //get line
-                                                         // println!("{:?}", res1);
-    let binding2 = res1.clone()[0]; //get line
+    let binding2 = res1.clone()[1]; //get line
     let binding3 = binding2.to_string();
     let res2: Vec<&str> = binding3.split("→").collect(); //get left
-    let binding4 = res2.clone()[0]; //get left
+    let binding4 = res2.clone()[1]; //get left
     let binding5 = binding4.to_string();
     let real_res_tmp = get_url(&binding5); //get http.......
-                                           // binding4.to_string()
+
     real_res_tmp.to_string()
 }
 

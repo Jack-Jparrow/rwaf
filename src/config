@@ -1,1 +1,6 @@
+Warning: !!!Do not change the relative position of any line!!!
 url=http://47.94.106.197:1024/sqlilabs/Less-1/?id=1 → port_scan.py、sql.py、xss.py, end like '?id=1'
+src_path=/home/jack/Desktop/pwn → Directory to be backed up or restored (folder or file), end like '/home/user/Desktop/my_file'
+dst_ip=129.226.211.132 → Backup destination server or restore source server, IPv4, like '192.168.0.100'
+dst_username=root → User name of backup destination server or restore source server, Users with root privileges, like 'root'
+dst_path=/home/lighthouse → Backup destination path or restore source file path (folder or file), like '/home/user/Desktop/my_file'
