@@ -1,7 +1,7 @@
 //! @Author       : 白银
 //! @Date         : 2023-01-11 20:42:38
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-02-14 19:51:57
+//! @LastEditTime : 2023-02-14 20:09:02
 //! @FilePath     : /rwaf/src/main.rs
 //! @Description  : 
 //! @Attention    : 
@@ -58,7 +58,7 @@ fn sql(
     std::string::String,
     std::string::String,
 )> {
-    let url = "mysql://root:Sa123@47.94.106.197:3306/mysql"; //每次git都要码掉！！！
+    let url = "mysql://username:passwd@ipv4:port/sqlname"; //每次git都要码掉！！！
     let pool = Pool::new(url).unwrap();
     let mut conn = pool.get_conn().unwrap();
 
