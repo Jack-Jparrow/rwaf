@@ -1,7 +1,7 @@
 //! @Author       : 白银
 //! @Date         : 2023-02-01 19:41:02
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-02-14 19:50:37
+//! @LastEditTime : 2023-02-15 19:02:05
 //! @FilePath     : /rwaf/src/module/protect/make_bak.rs
 //! @Description  : 备份文件
 //! @Attention    :
@@ -17,6 +17,7 @@ pub fn use_start_make_bak() {
 
         let now_date = date_time.clone()[0]; //get system date
         let now_time = date_time.clone()[1]; //get system time
+        let dow_what = "make bak";
 
         write_to_bak_log_sql();
 

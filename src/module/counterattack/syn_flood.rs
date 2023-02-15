@@ -1,7 +1,7 @@
 //! @Author       : 白银
 //! @Date         : 2023-01-19 19:33:57
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-02-14 19:49:58
+//! @LastEditTime : 2023-02-15 19:46:39
 //! @FilePath     : /rwaf/src/module/counterattack/syn_flood.rs
 //! @Description  :
 //! @Attention    :
@@ -50,7 +50,9 @@ pub fn start_syn() {
     let date_time: Vec<&str> = binding.split("\n").collect();
     let now_date = date_time.clone()[0]; //get system date
     let now_time = date_time.clone()[1]; //get system time
-    write_to_counterattack_log_sql();
+    let do_what = "counterattack";
+    let counteratack_ip = &target;
+    write_to_respond_log_sql();
 
     for _ in 0..thread_num.trim().parse().unwrap() {
         let t = thread::spawn(move || {
@@ -191,10 +193,6 @@ fn get_date_time() -> String {
     res
 }
 
-fn write_to_webshell_log_sql() {
-    todo!()
-}
-
-fn write_to_counterattack_log_sql() {
+fn write_to_respond_log_sql() {
     todo!()
 }

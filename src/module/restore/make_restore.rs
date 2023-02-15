@@ -1,7 +1,7 @@
 //! @Author       : 白银
 //! @Date         : 2023-02-01 20:23:32
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-02-14 19:51:34
+//! @LastEditTime : 2023-02-15 19:47:56
 //! @FilePath     : /rwaf/src/module/restore/make_restore.rs
 //! @Description  : 从备份服务器恢复
 //! @Attention    :
@@ -32,7 +32,9 @@ pub fn start_make_restore() {
     let now_time = date_time.clone()[1]; //get system time
 
     make_restore(fin_shell);
-    write_to_restore_log_sql();
+
+    let do_what = "make restore";
+    write_to_respond_log_sql();
 }
 
 // fn make_restore(fin_shell: String) {
@@ -150,6 +152,6 @@ fn get_needed_thing(s: &String) -> &str {
     &s[..]
 }
 
-fn write_to_restore_log_sql() {
+fn write_to_respond_log_sql() {
     todo!()
 }

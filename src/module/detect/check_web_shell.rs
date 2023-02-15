@@ -1,7 +1,7 @@
 //! @Author       : 白银
 //! @Date         : 2023-02-02 16:55:54
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-02-14 19:50:26
+//! @LastEditTime : 2023-02-15 19:32:38
 //! @FilePath     : /rwaf/src/module/detect/check_web_shell.rs
 //! @Description  :
 //! @Attention    :
@@ -34,12 +34,16 @@ pub fn start_check_web_shell_main() {
             open_dan_log.read_to_string(&mut dan_log_content).unwrap();
             let dan_log_size = fs::metadata("src/module/detect/dan.log").unwrap().len();
 
+            let do_what = "check webshell";
+
             if dan_log_size > 0 {
                 let do_res = true;
+                let if_send_email = true;
 
                 write_to_webshell_log_sql();
             } else {
                 let do_res = false;
+                let if_send_email = false;
 
                 write_to_webshell_log_sql();
             }
