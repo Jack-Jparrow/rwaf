@@ -1,7 +1,7 @@
 //! @Author       : 白银
 //! @Date         : 2023-02-01 20:23:32
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-02-15 19:47:56
+//! @LastEditTime : 2023-02-16 15:30:35
 //! @FilePath     : /rwaf/src/module/restore/make_restore.rs
 //! @Description  : 从备份服务器恢复
 //! @Attention    :
@@ -34,6 +34,9 @@ pub fn start_make_restore() {
     make_restore(fin_shell);
 
     let do_what = "make restore";
+    let event_id: String = now_date.to_string() + now_time + do_what;
+    let input_event_id = super::super::use_sm3::sm3_main(event_id);
+
     write_to_respond_log_sql();
 }
 

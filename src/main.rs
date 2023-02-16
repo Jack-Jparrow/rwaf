@@ -1,45 +1,62 @@
 //! @Author       : 白银
 //! @Date         : 2023-01-11 20:42:38
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-02-14 20:09:02
+//! @LastEditTime : 2023-02-16 19:17:30
 //! @FilePath     : /rwaf/src/main.rs
-//! @Description  : 
-//! @Attention    : 
-//! @Copyright (c) 2023 by 白银 captain-jparrow@qq.com, All Rights Reserved. 
+//! @Description  :
+//! @Attention    :
+//! @Copyright (c) 2023 by 白银 captain-jparrow@qq.com, All Rights Reserved.
 
 use mysql::prelude::*;
 use mysql::*;
-use std::{io, thread};
+use std::{env, io, thread};
 
 mod module;
 
 fn main() {
-    // println!("Hello, world!");
-    // loop {
-    //     println!("{:?}", module::warning::a::get_available_port());
-    // }
-    // module::warning::zhuabao::dofunc();
-    // module::counterattack::syn_flood::start_syn();
-    // module::protect::watch::watch_memory::output_get_mem_state();
-    // module::protect::watch::watch_cpu::output_get_cpu_state();
-    // module::protect::watch::watch_time::output_get_time();
-    // module::protect::watch::watch_date::output_get_day_state();
-    // module::protect::show_watch_res::show_watch_res_main();
-    // module::protect::make_bak::use_start_make_bak();
-    // module::protect::make_bak::start_make_bak();
-    // module::restore::make_restore::start_make_restore();
-    // module::detect::check_web_shell::start_check_web_shell_main();
-    // module::respond::stop_ddos::stop_ddos_main();
-    module::warning::port_sql_xss::port_sql_xss_main();
-
-    // thread::spawn(module::protect::show_watch_res::show_watch_res_main).join();
-    // thread::spawn(module::restore::make_restore::start_make_restore);
-    // println!("{:?}", res);
-    // sql_check();
-    
+    let args: Vec<String> = env::args().collect();
+    let query0 = &args.clone()[0];
+    match &query0 as &str {
+        "--" => {
+            let query1 = &args.clone()[1];
+            match &query1 as &str {
+                "-m" => {
+                    let step_1 =
+                        thread::spawn(|| module::warning::port_sql_xss::port_sql_xss_main());
+                    step_1.join();
+                    let step_2 =
+                        thread::spawn(|| module::protect::show_watch_res::show_watch_res_main());
+                    // step_2.join();
+                    let step_3 = thread::spawn(|| {
+                        module::detect::check_web_shell::start_check_web_shell_main();
+                    });
+                    let step_4 = thread::spawn(|| module::respond::stop_ddos::stop_ddos_main());
+                    let step_5 = thread::spawn(|| module::protect::make_bak::use_start_make_bak());
+                    step_5.join();
+                }
+                "-h" => output_help(),
+                "-ct" => module::counterattack::syn_flood::start_syn(),
+                "-re" => module::restore::make_restore::start_make_restore(),
+                _ => output_help(),
+                // _ => println!("123")
+            }
+        }
+        _ => output_help(),
+    }
 }
 
-fn sql_check(){
+fn output_help() {
+    println!("cargo run [OPTIONS] [args]...");
+    println!("Options:");
+    println!("    -- -h           Show basic help message and exit");
+    println!("    -- -m           Run rwaf/src/main.rs");
+    println!("    -- -re          Run rwaf/src/modules/restore/make_restore.rs, Manually execute the restore procedure");
+    println!("    -- -ct          Run rwaf/src/modules/counterattack/syn_flood.rs, Manually execute the counterattack procedure");
+    println!("ARGS:");
+    println!("    <args>...       If the [OPTIONS] is '-- -ct', the 1st [args] will be the target's IPv4 address and port, like '127.0.0.1:1234'");
+}
+
+fn sql_check() {
     let mut id = String::new();
     io::stdin().read_line(&mut id).expect("err");
     // let id = String::from("root");

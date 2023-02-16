@@ -1,7 +1,7 @@
 //! @Author       : 白银
 //! @Date         : 2023-02-04 16:13:03
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-02-14 19:51:18
+//! @LastEditTime : 2023-02-16 18:45:28
 //! @FilePath     : /rwaf/src/module/respond/stop_ddos.rs
 //! @Description  : ddos监测并阻断，可能需要调用反击
 //! @Attention    :
@@ -27,7 +27,7 @@ pub fn stop_ddos_main() {
 }
 
 fn stop_ddos() {
-    let black_count_max = 1; //设置阈值
+    let black_count_max = 2; //设置阈值
     let black_res_init = check_tcp_num();
     let black_res_init_rev = reverse(&black_res_init);
     let black_count: i32 = reverse(&get_count(&black_res_init_rev).to_string().trim())
@@ -40,10 +40,11 @@ fn stop_ddos() {
     let date_time: Vec<&str> = binding.split("\n").collect();
     let now_date = date_time.clone()[0];
     let now_time = date_time.clone()[1];
+    let do_what = "prevent ddos";
     // println!("{}", now_time);
 
     if black_count > black_count_max {
-        ban_ip(check_iptables_firewalld(), &black_ip);
+        // ban_ip(check_iptables_firewalld(), &black_ip);
 
         let sender_address = get_only_sender_address(); //like: NoBody <nobody@domain.tld>
         let receiver_address = get_only_receiver_address(); //like: NoBody <nobody@domain.tld>
@@ -60,9 +61,7 @@ fn stop_ddos() {
         let email_passwd = get_only_email_passwd(); //Email login passwd
         let smtp_address = get_only_smtp_address(); //Email smtp address
 
-        write_black_to_sql();
-        let do_res = true;
-        write_to_respond_sql(); //需要存放黑名单ip
+        // write_black_to_sql();
 
         send_email(
             sender_address,
@@ -72,9 +71,20 @@ fn stop_ddos() {
             email_passwd,
             &smtp_address,
         );
+
+        let do_res = "true";
+        let if_send_email = "true";
+        let event_id: String = now_date.to_string() + now_time + do_what + do_res + if_send_email;
+        let input_event_id = super::super::use_sm3::sm3_main(event_id);
+
+        // write_to_respond_sql(); //需要存放黑名单ip
     } else {
-        let do_res = false;
-        write_to_respond_sql(); //黑名单ip为空
+        let do_res = "false";
+        let if_send_email = "false";
+        let event_id: String = now_date.to_string() + now_time + do_what + do_res + if_send_email;
+        let input_event_id = super::super::use_sm3::sm3_main(event_id);
+
+        // write_to_respond_sql(); //黑名单ip为空
     }
 
     // println!("{}", reverse(&black_res_init));
@@ -194,7 +204,7 @@ fn send_email(
         .build();
 
     match mailer.send(&email) {
-        Ok(_) => println!("Email sent successfully!"),
+        Ok(_) => println!("Email prevent ddos sent successfully!"),
         Err(e) => panic!("Could not send email: {:?}", e),
     }
 }

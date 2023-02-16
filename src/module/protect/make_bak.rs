@@ -1,7 +1,7 @@
 //! @Author       : 白银
 //! @Date         : 2023-02-01 19:41:02
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-02-15 19:02:05
+//! @LastEditTime : 2023-02-16 18:29:06
 //! @FilePath     : /rwaf/src/module/protect/make_bak.rs
 //! @Description  : 备份文件
 //! @Attention    :
@@ -17,9 +17,11 @@ pub fn use_start_make_bak() {
 
         let now_date = date_time.clone()[0]; //get system date
         let now_time = date_time.clone()[1]; //get system time
-        let dow_what = "make bak";
+        let do_what = "make bak";
+        let event_id: String = now_date.to_string() + now_time + do_what;
+        let input_event_id = super::super::use_sm3::sm3_main(event_id);
 
-        write_to_bak_log_sql();
+        // write_to_bak_log_sql();
 
         thread::sleep(Duration::from_secs(5184000)); //do every 24h
     }

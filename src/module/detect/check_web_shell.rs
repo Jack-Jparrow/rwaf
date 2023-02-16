@@ -1,7 +1,7 @@
 //! @Author       : 白银
 //! @Date         : 2023-02-02 16:55:54
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-02-15 19:32:38
+//! @LastEditTime : 2023-02-16 18:51:43
 //! @FilePath     : /rwaf/src/module/detect/check_web_shell.rs
 //! @Description  :
 //! @Attention    :
@@ -37,21 +37,28 @@ pub fn start_check_web_shell_main() {
             let do_what = "check webshell";
 
             if dan_log_size > 0 {
-                let do_res = true;
-                let if_send_email = true;
+                let do_res = "true";
+                let if_send_email = "true";
+                let event_id: String =
+                    now_date.to_string() + now_time + do_what + do_res + if_send_email;
+                let input_event_id = super::super::use_sm3::sm3_main(event_id);
 
-                write_to_webshell_log_sql();
+                // write_to_webshell_log_sql();
             } else {
-                let do_res = false;
-                let if_send_email = false;
+                let do_res = "false";
+                let if_send_email = "false";
+                let event_id: String =
+                    now_date.to_string() + now_time + do_what + do_res + if_send_email;
+                let input_event_id = super::super::use_sm3::sm3_main(event_id);
 
-                write_to_webshell_log_sql();
+                // write_to_webshell_log_sql();
             }
         });
 
         // write_to_webshell_log_sql();
 
-        thread::sleep(Duration::from_secs(5184000)); //do every 24h
+        // thread::sleep(Duration::from_secs(5184000)); //do every 24h
+        thread::sleep(Duration::from_secs(60)); //do every 24h
     }
 }
 
@@ -127,7 +134,7 @@ fn send_email(
         .build();
 
     match mailer.send(&email) {
-        Ok(_) => println!("Email sent successfully!"),
+        Ok(_) => println!("Email check webshell sent successfully!"),
         Err(e) => panic!("Could not send email: {:?}", e),
     }
 }

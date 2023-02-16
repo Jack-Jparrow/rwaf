@@ -1,0 +1,2 @@
+cargo:rustc-cfg=rcrypto_aes="support"
+cargo:rustc-cfg=rcrypto_sse2="support"

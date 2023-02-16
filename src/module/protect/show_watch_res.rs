@@ -1,7 +1,7 @@
 //! @Author       : 白银
 //! @Date         : 2023-01-30 21:47:28
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-02-14 18:55:10
+//! @LastEditTime : 2023-02-16 17:13:53
 //! @FilePath     : /rwaf/src/module/protect/show_watch_res.rs
 //! @Description  :
 //! @Attention    :
@@ -42,8 +42,16 @@ pub fn show_watch_res_main() {
             let disk_state = super::watch::watch_disk::output_get_disk_state();
             let net_state_receive = super::watch::watch_net::output_get_net_state_receive();
             let net_state_send = super::watch::watch_net::output_get_net_state_send();
+            let event_id: String = date_state.to_string()
+                + &time_state
+                + &cpu_state
+                + &mem_state
+                + &disk_state
+                + &net_state_receive
+                + &net_state_send;
+            let input_event_id = super::super::use_sm3::sm3_main(event_id);
 
-            write_to_state_sql();
+            // write_to_state_sql();
         });
 
         thread::sleep(Duration::from_secs(60)); //do every 60s

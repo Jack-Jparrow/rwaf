@@ -1392,6 +1392,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "rcrypto"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "869b7f2413727bc5d14ed9fb16641b15586225b18b7b984f1a04ecf5527153d6"
+dependencies = [
+ "rmath",
+]
+
+[[package]]
 name = "redox_syscall"
 version = "0.2.16"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1461,6 +1470,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "rmath"
+version = "0.1.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4bb6c3c9c8b008ed9e7a1bde46c2ab71b93c2e4c47cabee54755077bb4414928"
+
+[[package]]
 name = "rust_decimal"
 version = "1.27.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1511,6 +1526,7 @@ dependencies = [
  "pnet",
  "pnet_transport",
  "rand",
+ "rcrypto",
  "regex",
 ]
 

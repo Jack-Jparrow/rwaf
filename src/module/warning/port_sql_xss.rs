@@ -1,7 +1,7 @@
 //! @Author       : 白银
 //! @Date         : 2023-02-12 18:56:47
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-02-14 19:17:19
+//! @LastEditTime : 2023-02-16 17:16:11
 //! @FilePath     : /rwaf/src/module/warning/port_sql_xss.rs
 //! @Description  : 一次性任务，运行检查
 //! @Attention    :
@@ -57,7 +57,7 @@ pub fn port_sql_xss_main() {
     println!("------------------------------------------------------------------------------\n");
 
     println!("......Xss test is working, please wait......");
-    check_xss(xss_script, &url);
+    // check_xss(xss_script, &url);
     let xss_script_log = "src/module/warning/.log/xss.log".to_string();
     let xss_script_log_size = fs::metadata("src/module/warning/.log/xss.log")
         .unwrap()

@@ -1,0 +1,3 @@
+cargo:rustc-cfg=rmath_avx2="support"
+cargo:rustc-cfg=rmath_rdseed="support"
+cargo:rustc-cfg=rmath_rdrand="support"

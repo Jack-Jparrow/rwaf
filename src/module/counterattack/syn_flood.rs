@@ -1,7 +1,7 @@
 //! @Author       : 白银
 //! @Date         : 2023-01-19 19:33:57
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-02-15 19:46:39
+//! @LastEditTime : 2023-02-16 19:01:20
 //! @FilePath     : /rwaf/src/module/counterattack/syn_flood.rs
 //! @Description  :
 //! @Attention    :
@@ -14,7 +14,7 @@ use pnet::packet::{
 };
 use pnet_transport::{transport_channel, TransportChannelType::Layer3};
 use rand::{random, thread_rng, Rng};
-use std::{io::stdin, net::Ipv4Addr, process::Command, thread};
+use std::{io::stdin, net::Ipv4Addr, process::Command, thread, env};
 const IPV4_HEADER_LEN: usize = 20;
 const TCP_HEADER_LEN: usize = 32;
 const DATA_HEADER_LEN: usize = 1024;
@@ -27,9 +27,11 @@ pub fn start_syn() {
     // };
 
     let data_count = 10000000;
-    println!("input ipv4_addr & port:");
-    println!("for example -> 127.0.0.1:1234");
-    let mut ipv4_addr_port = String::new();
+    // println!("input ipv4_addr & port:");
+    // println!("for example -> 127.0.0.1:1234");
+    let args: Vec<String> = env::args().collect();
+    let arg_ipv4_addr_port = &args.clone()[2];
+    let mut ipv4_addr_port = arg_ipv4_addr_port.to_string();
     stdin().read_line(&mut ipv4_addr_port).expect("err");
     let ipv4_addr: &str = get_ipv4_addr(&ipv4_addr_port);
     let ipv4_port: &str = get_ipv4_port(&ipv4_addr_port);
@@ -51,7 +53,10 @@ pub fn start_syn() {
     let now_date = date_time.clone()[0]; //get system date
     let now_time = date_time.clone()[1]; //get system time
     let do_what = "counterattack";
-    let counteratack_ip = &target;
+    let mut counterattack_ip = &target.to_string();
+    let event_id: String = now_date.to_string() + now_time + do_what + counterattack_ip;
+    let input_event_id = super::super::use_sm3::sm3_main(event_id);
+
     write_to_respond_log_sql();
 
     for _ in 0..thread_num.trim().parse().unwrap() {
