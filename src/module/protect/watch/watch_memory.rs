@@ -1,17 +1,9 @@
 //! @Author       : 白银
 //! @Date         : 2023-01-29 21:19:15
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-02-01 15:18:10
+//! @LastEditTime : 2023-02-17 19:35:14
 //! @FilePath     : /rwaf/src/module/protect/watch/watch_memory.rs
-//! @Description  : 
-//! @Attention    : 
-//! @Copyright (c) 2023 by 白银 captain-jparrow@qq.com, All Rights Reserved. 
-//! @Author       : 白银
-//! @Date         : 2023-01-29 19:14:02
-//! @LastEditors  : 白银
-//! @LastEditTime : 2023-01-31 18:53:18
-//! @FilePath     : /rwaf/src/module/protect/watch/watch_memory.rs
-//! @Description  : 内存占用率
+//! @Description  :
 //! @Attention    :
 //! @Copyright (c) 2023 by 白银 captain-jparrow@qq.com, All Rights Reserved.
 
@@ -30,7 +22,7 @@ pub fn output_get_mem_state() -> String {
             let res = mem_tmp.to_string() + &fuhao;
 
             res.to_string()
-        },
+        }
         _ => {
             // let ava_memm: f64 = ava_mem(&mem_state).trim().parse().unwrap();
             let ava: f64 = ava_memm / total_mem;
@@ -39,7 +31,8 @@ pub fn output_get_mem_state() -> String {
             let fuhao1 = ".";
             let fuhao2 = "%";
             let res_tmp = mem_tmp.to_string();
-            let res = get_zhengshu(&res_tmp).to_string() + &fuhao1 + get_xiaoshu(&res_tmp) + &fuhao2;
+            let res =
+                get_zhengshu(&res_tmp).to_string() + &fuhao1 + get_xiaoshu(&res_tmp) + &fuhao2;
 
             res.to_string()
         }
@@ -108,8 +101,7 @@ fn get_zhengshu(s: &String) -> &str {
     &s[..]
 }
 
-fn get_xiaoshu (s: &String) -> &str {
-
+fn get_xiaoshu(s: &String) -> &str {
     // let len = s.trim().chars().count();
     let bytes = s.as_bytes();
 

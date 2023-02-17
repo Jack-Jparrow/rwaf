@@ -1,7 +1,7 @@
 //! @Author       : 白银
 //! @Date         : 2023-02-04 16:13:03
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-02-16 18:45:28
+//! @LastEditTime : 2023-02-17 20:37:40
 //! @FilePath     : /rwaf/src/module/respond/stop_ddos.rs
 //! @Description  : ddos监测并阻断，可能需要调用反击
 //! @Attention    :
@@ -17,10 +17,11 @@ use std::{
 
 use execute::Execute;
 use lettre::{transport::smtp::authentication::Credentials, Message, SmtpTransport, Transport};
+use mysql::{params, prelude::Queryable, Pool};
 
 pub fn stop_ddos_main() {
     loop {
-        let t = thread::spawn(move || stop_ddos());
+        let _t = thread::spawn(move || stop_ddos());
 
         thread::sleep(Duration::from_secs(60)); //do every 60s
     }
@@ -41,10 +42,11 @@ fn stop_ddos() {
     let now_date = date_time.clone()[0];
     let now_time = date_time.clone()[1];
     let do_what = "prevent ddos";
+    let sqlurl = &get_only_sqlurl().to_string()[..];
     // println!("{}", now_time);
 
     if black_count > black_count_max {
-        // ban_ip(check_iptables_firewalld(), &black_ip);
+        ban_ip(check_iptables_firewalld(), &black_ip);
 
         let sender_address = get_only_sender_address(); //like: NoBody <nobody@domain.tld>
         let receiver_address = get_only_receiver_address(); //like: NoBody <nobody@domain.tld>
@@ -61,7 +63,17 @@ fn stop_ddos() {
         let email_passwd = get_only_email_passwd(); //Email login passwd
         let smtp_address = get_only_smtp_address(); //Email smtp address
 
-        // write_black_to_sql();
+        let event_id_black: String = now_date.to_string() + now_time + &black_ip;
+        let input_event_id_black_respond = super::super::use_sm3::sm3_main(event_id_black);
+
+        write_black_to_sql(
+            sqlurl,
+            input_event_id_black_respond,
+            now_date,
+            now_time,
+            &black_ip,
+        )
+        .unwrap();
 
         send_email(
             sender_address,
@@ -74,15 +86,41 @@ fn stop_ddos() {
 
         let do_res = "true";
         let if_send_email = "true";
-        let event_id: String = now_date.to_string() + now_time + do_what + do_res + if_send_email;
+        let event_id: String =
+            now_date.to_string() + now_time + do_what + &black_ip + do_res + if_send_email;
         let input_event_id = super::super::use_sm3::sm3_main(event_id);
 
+        write_to_respond_log_sql(
+            sqlurl,
+            input_event_id,
+            now_date,
+            now_time,
+            do_what,
+            &black_ip,
+            do_res,
+            if_send_email,
+        )
+        .unwrap();
         // write_to_respond_sql(); //需要存放黑名单ip
     } else {
         let do_res = "false";
         let if_send_email = "false";
-        let event_id: String = now_date.to_string() + now_time + do_what + do_res + if_send_email;
+        let black_ip = "-";
+        let event_id: String =
+            now_date.to_string() + now_time + do_what + &black_ip + do_res + if_send_email;
         let input_event_id = super::super::use_sm3::sm3_main(event_id);
+
+        write_to_respond_log_sql(
+            sqlurl,
+            input_event_id,
+            now_date,
+            now_time,
+            do_what,
+            black_ip,
+            do_res,
+            if_send_email,
+        )
+        .unwrap();
 
         // write_to_respond_sql(); //黑名单ip为空
     }
@@ -129,7 +167,7 @@ fn check_iptables_firewalld() -> String {
 
     let if_firewalld_path = "src/module/respond/if_firewalld.log";
     let mut f = File::create(if_firewalld_path).unwrap();
-    f.write_all(if_firewalld_res.as_bytes());
+    f.write_all(if_firewalld_res.as_bytes()).unwrap();
 
     let mut open_firewalld = File::open("src/module/respond/if_firewalld.log").unwrap();
     let mut firewalld_content = String::new();
@@ -166,20 +204,20 @@ fn ban_ip(which_firewall: String, black_ip: &str) {
     if which_firewall.trim() == "iptables".to_string() {
         let command = "iptables -I INPUT -s ".to_string() + black_ip + &" -j DROP";
         let mut iptables_exec = execute::shell(command);
-        let output = iptables_exec.execute_output().unwrap();
+        let _output = iptables_exec.execute_output().unwrap();
     } else if which_firewall.trim() == "firewalld".to_string() {
         let command = "firewall-cmd --add-rich-rule=\"rule family='ipv4' source address='"
             .to_string()
             + black_ip
             + "' reject\"";
         let mut firewalld_exec = execute::shell(command);
-        let output = firewalld_exec.execute_output().unwrap();
+        let _output = firewalld_exec.execute_output().unwrap();
     }
 }
 
 fn rm_check_iptables_firewalld_log(log_path: String) {
     let mut command = execute::command_args!("rm", "-rf", log_path);
-    let output = command.execute_output().unwrap();
+    let _output = command.execute_output().unwrap();
 }
 
 fn send_email(
@@ -248,14 +286,6 @@ fn reverse(input: &str) -> String {
         output.push(c);
     }
     output
-}
-
-fn write_black_to_sql() {
-    todo!()
-}
-
-fn write_to_respond_sql() {
-    todo!()
 }
 
 fn get_date_time() -> String {
@@ -363,4 +393,109 @@ fn get_needed_thing(s: &String) -> &str {
 
     // s.len()
     &s[..]
+}
+
+fn get_only_sqlurl() -> String {
+    let mut open_config = File::open("src/config").unwrap();
+    let mut config_content = String::new();
+    open_config.read_to_string(&mut config_content).unwrap();
+
+    let binding = config_content;
+    let res1: Vec<&str> = binding.split("\n").collect(); //get line
+    let binding2 = res1.clone()[12]; //get line
+    let binding3 = binding2.to_string();
+    let res2: Vec<&str> = binding3.split("→").collect(); //get left
+    let binding4 = res2.clone()[0]; //get left
+    let binding5 = binding4.to_string();
+    let real_res_tmp = get_needed_thing(&binding5); //get sqlurl
+
+    real_res_tmp.to_string()
+}
+
+struct Payment {
+    event_id: String,
+    date: String,
+    time: String,
+    event: String,
+    black_ip: String,
+    if_banned: String,
+    if_send_email: String,
+}
+
+fn write_to_respond_log_sql(
+    sqlurl: &str,
+    input_event_id: String,
+    now_date: &str,
+    now_time: &str,
+    do_what: &str,
+    black_ip: &str,
+    do_res: &str,
+    if_send_email: &str,
+) -> std::result::Result<(), Box<dyn std::error::Error>> {
+    let url = sqlurl;
+
+    let pool = Pool::new(url)?;
+    let mut conn = pool.get_conn()?;
+    let payments = vec![Payment {
+        event_id: input_event_id,
+        date: now_date.to_string(),
+        time: now_time.to_string(),
+        event: do_what.to_string(),
+        black_ip: black_ip.to_string(),
+        if_banned: do_res.to_string(),
+        if_send_email: if_send_email.to_string(),
+    }];
+
+    conn.exec_batch(
+        r"INSERT INTO respond_log (event_id, date, time, event, black_ip, if_banned, if_send_email) VALUES (:event_id, :date, :time, :event, :black_ip, :if_banned, :if_send_email)",
+        payments.iter().map(|p| params! {
+            "event_id" => p.event_id.clone(),
+            "date" => p.date.clone(),
+            "time" => &p.time,
+            "event" => &p.event,
+            "black_ip" => &p.black_ip,
+            "if_banned" => &p.if_banned,
+            "if_send_email" => &p.if_send_email,
+        })
+    )?;
+
+    Ok(())
+}
+
+struct Payment2 {
+    event_id: String,
+    date: String,
+    time: String,
+    black_ip: String,
+}
+
+fn write_black_to_sql(
+    sqlurl: &str,
+    input_event_id_black_respond: String,
+    now_date: &str,
+    now_time: &str,
+    black_ip: &str,
+) -> std::result::Result<(), Box<dyn std::error::Error>> {
+    let url = sqlurl;
+
+    let pool = Pool::new(url)?;
+    let mut conn = pool.get_conn()?;
+    let payments = vec![Payment2 {
+        event_id: input_event_id_black_respond,
+        date: now_date.to_string(),
+        time: now_time.to_string(),
+        black_ip: black_ip.to_string(),
+    }];
+
+    conn.exec_batch(
+        r"INSERT INTO black_ip (event_id, date, time, black_ip) VALUES (:event_id, :date, :time, :black_ip)",
+        payments.iter().map(|p| params! {
+            "event_id" => p.event_id.clone(),
+            "date" => p.date.clone(),
+            "time" => &p.time,
+            "black_ip" => &p.black_ip,
+        })
+    )?;
+
+    Ok(())
 }

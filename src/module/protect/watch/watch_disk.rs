@@ -1,7 +1,7 @@
 //! @Author       : 白银
 //! @Date         : 2023-01-31 16:38:57
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-01-31 21:14:23
+//! @LastEditTime : 2023-02-17 19:25:43
 //! @FilePath     : /rwaf/src/module/protect/watch/watch_disk.rs
 //! @Description  : 磁盘%util指标
 //! @Attention    : ioRate计算方法：https://zhuanlan.zhihu.com/p/60000317
@@ -15,13 +15,13 @@ pub fn output_get_disk_state() -> String{
     let start: f64 = res_tmp[0].trim().parse().unwrap();
     let end: f64 = res_tmp[1].trim().parse().unwrap();
     let period = 200.0;//watch_disk.sh中sleep的时间（此处为ms，sh文件中为s）
-    let ioRate: f64 = (end - start) / period;
+    let io_rate: f64 = (end - start) / period;
     let fuhao = "%";
 
-    let ioRate_tmp = ioRate.to_string();
-    let ioRate_res = get_zhengshu(&ioRate_tmp).to_string();
+    let io_rate_tmp = io_rate.to_string();
+    let io_rate_res = get_zhengshu(&io_rate_tmp).to_string();
 
-    let res = ioRate_res + &fuhao;
+    let res = io_rate_res + &fuhao;
 
     res
     // ioRate.to_string()
