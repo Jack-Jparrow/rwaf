@@ -1,0 +1,13 @@
+Warning: !!!Do not change the relative position of any line!!!
+url=http://999.888.777.666:1234/sqlilabs/Less-1/?id=1 → port_scan.py、sql.py、xss.py, end like '?id=1'
+src_path=/home/user/Desktop/my_folder_file → The source path of the business file to be backed up (folder or file), end like '/home/user/Desktop/my_folder_file'
+dst_ip=666.777.888.999 → Backup destination server or restore source server, IPv4, like '192.168.0.100'
+dst_username=root → User name of backup destination server or restore source server, Users with root privileges, like 'root'
+dst_path=/home/user/Desktop/my_folder_file → Backup destination address or restore source address (folder or file), like '/home/user/Desktop/my_folder_file'
+sender_address=rwaf <rwaf@gmail.com> → sender, like: 'NoBody <nobody@domain.tld>'
+receiver_address=receiver <receiver@gmail.com> → receiver, like: 'NoBody <nobody@domain.tld>'
+email_username=rwaf@gmail.com → Email login user name, like: nobody@domain.tld
+email_passwd=123456 → Email login passwd
+smtp_address=smtp.gmail.com → Email smtp address, like: 'smtp.abc.com'
+another_src_path=/home/user/Desktop/my_folder_file → The path to restore the backup file (folder or file), keep it consistent with 'src_path' if you want to restore to the original address, end like '/home/user/Desktop/my_folder_file'
+sqlurl=mysql://root:root123@999.888.777.666:3306/test → The url to connect to the remote database, like: 'mysql://root:root123@999.888.777.666:3306/test'

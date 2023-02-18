@@ -2,7 +2,7 @@
  * @Author       : 白银
  * @Date         : 2023-01-31 21:22:22
  * @LastEditors  : 白银
- * @LastEditTime : 2023-02-18 21:01:27
+ * @LastEditTime : 2023-02-18 21:19:17
  * @FilePath     : /rwaf/README.md
  * @Description  : 
  * @Attention    : 
@@ -21,9 +21,11 @@ make sure that you've been able to connect to the bak_server by `ssh-key` before
 
 **This is a graduation project from [School of Computer Science of THNU](https://jsjxy.thnu.edu.cn)**
 
-***Not yet completed, under development***
+~~***Not yet completed, under development***~~
 
-# todo
+***Preliminary development completed***
+
+# maybe_final_todo
 - [x] 守护进程
 - [x] 写入数据库
 - [x] 优化反击模块
