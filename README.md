@@ -2,7 +2,7 @@
  * @Author       : 白银
  * @Date         : 2023-01-31 21:22:22
  * @LastEditors  : 白银
- * @LastEditTime : 2023-02-17 20:50:53
+ * @LastEditTime : 2023-02-18 21:01:27
  * @FilePath     : /rwaf/README.md
  * @Description  : 
  * @Attention    : 
@@ -24,7 +24,7 @@ make sure that you've been able to connect to the bak_server by `ssh-key` before
 ***Not yet completed, under development***
 
 # todo
-- [ ] 守护进程
+- [x] 守护进程
 - [x] 写入数据库
 - [x] 优化反击模块
 - [x] 在响应记录数据库中，写入ban掉的ip及当时日期时间，手动恢复日期时间，手动反击日期时间目标ip
@@ -35,7 +35,7 @@ make sure that you've been able to connect to the bak_server by `ssh-key` before
 Options:
 
     -- -h           Show basic help message and exit
-    -- -m           Run rwaf/src/main.rs
+    -- -m           Run rwaf/src/main.rs, and the pid will be stored in src/tmp/get_pid
     -- -re          Run rwaf/src/modules/restore/make_restore.rs, Manually execute the restore procedure
     -- -ct          Run rwaf/src/modules/counterattack/syn_flood.rs, Manually execute the counterattack procedure
 
