@@ -6,16 +6,16 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-mysql = "*"
-mysql_common = "*"
-libpcap = "*"
-rand = "*"
-pnet = "*"
-pnet_transport = "*"
-clap = "*"
-execute = "*"
-lettre = "*"
-regex = "*"
-rcrypto = "*"
-daemonize = "*"
+mysql = "*" # 23.0.1
+mysql_common = "*" # 0.29.2
+libpcap = "*" # 0.1.7
+rand = "*" # 0.8.5
+pnet = "*" # 0.31.0
+pnet_transport = "*" # 0.31.0
+clap = "*" # 4.0.32
+execute = "*" # 0.2.11
+lettre = "*" # 0.10.1
+regex = "*" # 1.17.1
+rcrypto = "*" # 0.2.0
+daemonize = "*" # 0.4.1
 # lettre_email = "*"
