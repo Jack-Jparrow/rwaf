@@ -1,7 +1,7 @@
 //! @Author       : 白银
 //! @Date         : 2023-01-11 20:42:38
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-02-18 21:01:56
+//! @LastEditTime : 2023-02-23 16:51:50
 //! @FilePath     : /rwaf/src/main.rs
 //! @Description  :
 //! @Attention    :
@@ -18,6 +18,7 @@ use daemonize::Daemonize;
 mod module;
 
 fn main() {
+
     let args: Vec<String> = env::args().collect();
     let query0 = &args.clone()[0];
     // println!("********");
@@ -49,6 +50,7 @@ fn main() {
         }
         _ => output_help(),
     }
+
 }
 
 fn output_help() {

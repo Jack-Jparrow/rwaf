@@ -1,7 +1,7 @@
 //! @Author       : 白银
 //! @Date         : 2023-01-19 19:33:57
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-02-17 19:35:57
+//! @LastEditTime : 2023-02-23 16:48:10
 //! @FilePath     : /rwaf/src/module/counterattack/syn_flood.rs
 //! @Description  :
 //! @Attention    :
@@ -134,7 +134,7 @@ fn build_packet(target: String, port: u32, packet: &mut [u8]) -> TcpPacket {
 
     // let ipv4_source: Ipv4Addr = abcd.clone().;
     // println!("{}", get_local_ipv4());
-    let ipv4_source: Ipv4Addr = get_local_ipv4().trim().parse().unwrap();
+    let ipv4_source: Ipv4Addr = get_local_ip(&get_local_ipv4()).trim().parse().unwrap();
 
     let ipv4_dst: Ipv4Addr = target.parse().unwrap();
     {
@@ -282,4 +282,18 @@ fn write_to_respond_log_sql(
     )?;
 
     Ok(())
+}
+
+fn get_local_ip(s: &String) -> &str {
+    let len = s.trim().chars().count();
+    let bytes = s.as_bytes();
+
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[0..i];
+        }
+    }
+
+    // s.len()
+    &s[..]
 }
