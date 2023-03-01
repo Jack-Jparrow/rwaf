@@ -1,7 +1,7 @@
 //! @Author       : 白银
 //! @Date         : 2023-01-11 20:42:38
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-02-23 16:51:50
+//! @LastEditTime : 2023-03-01 17:19:15
 //! @FilePath     : /rwaf/src/main.rs
 //! @Description  :
 //! @Attention    :
@@ -18,6 +18,16 @@ use daemonize::Daemonize;
 mod module;
 
 fn main() {
+    println!(r".--------------.  .--------------.  .--------------.  .--------------.");
+    println!(r"|  _______     |  | _____  _____ |  |      __      |  |  _________   |");
+    println!(r"| |_   __ \    |  ||_   _||_   _||  |     /  \     |  | |_   ___  |  |");
+    println!(r"|   | |__) |   |  |  | | /\ | |  |  |    / /\ \    |  |   | |_  \_|  |");
+    println!(r"|   |  __ /    |  |  | |/  \| |  |  |   / ____ \   |  |   |  _|      |");
+    println!(r"|  _| |  \ \_  |  |  |   /\   |  |  | _/ /    \ \_ |  |  _| |_       |");
+    println!(r"| |____| |___| |  |  |__/  \__|  |  ||____|  |____||  | |_____|      |");
+    println!(r"|              |  |              |  |              |  |              |");
+    println!(r"'--------------'  '--------------'  '--------------'  '--------------'  beta v1.0");
+    println!("");
 
     let args: Vec<String> = env::args().collect();
     let query0 = &args.clone()[0];
@@ -41,6 +51,15 @@ fn main() {
                     // println!("{}", get_only_pid());
                     // println!("123");
                 }
+                "-sys" => module::protect::show_watch_res::show_watch_res_main(),
+                "-de" => {
+                    let _step_3 = thread::spawn(|| {
+                        module::detect::check_web_shell::start_check_web_shell_main();
+                    });
+                    let _step_4 = thread::spawn(|| module::respond::stop_ddos::stop_ddos_main());
+                    _step_4.join().unwrap();
+                },
+                "-bak" => module::protect::make_bak::use_start_make_bak(),
                 "-h" => output_help(),
                 "-ct" => module::counterattack::syn_flood::start_syn(),
                 "-re" => module::restore::make_restore::start_make_restore(),

@@ -285,7 +285,7 @@ fn write_to_respond_log_sql(
 }
 
 fn get_local_ip(s: &String) -> &str {
-    let len = s.trim().chars().count();
+    // let len = s.trim().chars().count();
     let bytes = s.as_bytes();
 
     for (i, &item) in bytes.iter().enumerate() {

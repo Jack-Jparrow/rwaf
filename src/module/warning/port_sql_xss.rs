@@ -57,17 +57,17 @@ pub fn port_sql_xss_main() {
     println!("------------------------------------------------------------------------------\n");
 
     println!("......Xss test is working, please wait......");
-    // check_xss(xss_script, &url);
-    // let xss_script_log = "src/module/warning/.log/xss.log".to_string();
-    // let xss_script_log_size = fs::metadata("src/module/warning/.log/xss.log")
-    //     .unwrap()
-    //     .len();
-    // println!("***Xss test is done***");
-    // if xss_script_log_size > 0 {
-    //     read_log(xss_script_log);
+    check_xss(xss_script, &url);
+    let xss_script_log = "src/module/warning/.log/xss.log".to_string();
+    let xss_script_log_size = fs::metadata("src/module/warning/.log/xss.log")
+        .unwrap()
+        .len();
+    println!("***Xss test is done***");
+    if xss_script_log_size > 0 {
+        read_log(xss_script_log);
 
-    //     println!("!!!There is a risk of xss!!!\n")
-    // }
+        println!("!!!There is a risk of xss!!!\n")
+    }
     println!("------------------------------------------------------------------------------");
 }
 

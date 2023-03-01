@@ -1,7 +1,7 @@
 //! @Author       : 白银
 //! @Date         : 2023-02-01 19:41:02
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-02-17 20:03:34
+//! @LastEditTime : 2023-02-24 16:38:02
 //! @FilePath     : /rwaf/src/module/protect/make_bak.rs
 //! @Description  : 备份文件
 //! @Attention    :
@@ -26,7 +26,7 @@ pub fn use_start_make_bak() {
 
         write_to_bak_log_sql(sqlurl, input_event_id, now_date, now_time, do_what).unwrap();
 
-        thread::sleep(Duration::from_secs(5184000)); //do every 24h
+        thread::sleep(Duration::from_secs(604800)); //do every 1 week
     }
 }
 

@@ -1,7 +1,7 @@
 //! @Author       : 白银
 //! @Date         : 2023-02-02 16:55:54
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-02-17 20:03:13
+//! @LastEditTime : 2023-02-24 16:17:54
 //! @FilePath     : /rwaf/src/module/detect/check_web_shell.rs
 //! @Description  : check webshell
 //! @Attention    :
@@ -77,8 +77,7 @@ pub fn start_check_web_shell_main() {
 
         // write_to_webshell_log_sql();
 
-        // thread::sleep(Duration::from_secs(5184000)); //do every 24h
-        thread::sleep(Duration::from_secs(60)); //do every 24h
+        thread::sleep(Duration::from_secs(3600)); //do every 1h
     }
 }
 
