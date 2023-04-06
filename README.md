@@ -2,7 +2,7 @@
  * @Author       : 白银
  * @Date         : 2023-01-31 21:22:22
  * @LastEditors  : 白银
- * @LastEditTime : 2023-02-18 21:54:39
+ * @LastEditTime : 2023-04-06 10:46:15
  * @FilePath     : /rwaf/README.md
  * @Description  : 
  * @Attention    : 
@@ -25,9 +25,14 @@ make sure that you've been able to connect to the bak_server by `ssh-key` before
 
 ~~***Not yet completed, under development***~~
 
-***Preliminary development completed***
+~~***Preliminary development completed 2023.02.18***~~
 
-# maybe_final_todo
+***Will be updated irregularly 2023.04.04***
+
+# todo
+- [] 使用Rust代码实现备份恢复功能而不是命令执行
+- [] 备份过程加密传输
+- [] 可指定时区
 - [x] 守护进程
 - [x] 写入数据库
 - [x] 优化反击模块
