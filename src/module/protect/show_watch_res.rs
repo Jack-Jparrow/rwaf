@@ -1,7 +1,7 @@
 //! @Author       : 白银
 //! @Date         : 2023-01-30 21:47:28
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-02-17 20:11:02
+//! @LastEditTime : 2023-04-06 19:50:19
 //! @FilePath     : /rwaf/src/module/protect/show_watch_res.rs
 //! @Description  :
 //! @Attention    :
@@ -15,24 +15,25 @@ use mysql::{params, prelude::Queryable, Pool};
 pub fn show_watch_res_main() {
     loop {
         let _t = thread::spawn(move || {
-            println!(
-                "{} {} {} {} {} {} {}",
-                super::watch::watch_date_time_cpu::output_get_date_state(),
-                super::watch::watch_date_time_cpu::output_get_time_state(),
-                super::watch::watch_date_time_cpu::output_get_cpu_state(),
-                super::watch::watch_memory::output_get_mem_state(),
-                super::watch::watch_disk::output_get_disk_state(),
-                super::watch::watch_net::output_get_net_state_receive(),
-                super::watch::watch_net::output_get_net_state_send()
-            );
-
-            let date_state = super::watch::watch_date_time_cpu::output_get_date_state();
-            let time_state = super::watch::watch_date_time_cpu::output_get_time_state();
-            let cpu_state = super::watch::watch_date_time_cpu::output_get_cpu_state();
+            let date_state = super::watch::watch_date::output_get_date_state();
+            let time_state = super::watch::watch_time::output_get_time_state();
+            let cpu_state = super::watch::watch_cpu::output_get_cpu_state();
             let mem_state = super::watch::watch_memory::output_get_mem_state();
             let disk_state = super::watch::watch_disk::output_get_disk_state();
             let net_state_receive = super::watch::watch_net::output_get_net_state_receive();
             let net_state_send = super::watch::watch_net::output_get_net_state_send();
+
+            println!(
+                "{} {} {} {} {} {} {}",
+                date_state,
+                time_state,
+                cpu_state,
+                mem_state,
+                disk_state,
+                net_state_receive,
+                net_state_send
+            );
+
             let do_what = "system_monitor";
             let event_id: String = date_state.to_string()
                 + &time_state
