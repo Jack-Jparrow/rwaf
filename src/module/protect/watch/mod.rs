@@ -10,6 +10,7 @@
 pub mod watch_cpu;
 pub mod watch_disk;
 pub mod watch_memory;
-pub mod watch_net;
+pub mod watch_upload_net;
+pub mod watch_download_net;
 pub mod watch_date;
 pub mod watch_time;

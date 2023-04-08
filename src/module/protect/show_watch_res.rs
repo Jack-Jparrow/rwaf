@@ -1,7 +1,7 @@
 //! @Author       : 白银
 //! @Date         : 2023-01-30 21:47:28
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-04-06 19:50:19
+//! @LastEditTime : 2023-04-08 19:47:33
 //! @FilePath     : /rwaf/src/module/protect/show_watch_res.rs
 //! @Description  :
 //! @Attention    :
@@ -15,13 +15,24 @@ use mysql::{params, prelude::Queryable, Pool};
 pub fn show_watch_res_main() {
     loop {
         let _t = thread::spawn(move || {
-            let date_state = super::watch::watch_date::output_get_date_state();
-            let time_state = super::watch::watch_time::output_get_time_state();
-            let cpu_state = super::watch::watch_cpu::output_get_cpu_state();
-            let mem_state = super::watch::watch_memory::output_get_mem_state();
-            let disk_state = super::watch::watch_disk::output_get_disk_state();
-            let net_state_receive = super::watch::watch_net::output_get_net_state_receive();
-            let net_state_send = super::watch::watch_net::output_get_net_state_send();
+            let handle_date = thread::spawn(|| super::watch::watch_date::output_get_date_state());
+            let handle_time = thread::spawn(|| super::watch::watch_time::output_get_time_state());
+            let handle_cpu = thread::spawn(|| super::watch::watch_cpu::output_get_cpu_state());
+            let handle_mem =
+                thread::spawn(|| super::watch::watch_memory::output_get_mem_state());
+            let handle_disk = thread::spawn(|| super::watch::watch_disk::output_get_disk_state());
+            let handle_net_receive =
+                thread::spawn(|| super::watch::watch_download_net::output_get_net_state_download());
+            let handle_net_send =
+                thread::spawn(|| super::watch::watch_upload_net::output_get_net_state_upload());
+
+            let date_state = handle_date.join().unwrap();
+            let time_state = handle_time.join().unwrap();
+            let cpu_state = handle_cpu.join().unwrap();
+            let mem_state = handle_mem.join().unwrap();
+            let disk_state = handle_disk.join().unwrap();
+            let net_state_receive = handle_net_receive.join().unwrap();
+            let net_state_send = handle_net_send.join().unwrap();
 
             println!(
                 "{} {} {} {} {} {} {}",
@@ -64,8 +75,8 @@ pub fn show_watch_res_main() {
 
         thread::sleep(Duration::from_secs(60)); //do every 60s
     }
-    // println!("{}", super::watch::watch_disk::output_get_disk_state());
-    // super::watch::watch_cpu::split_from_res_date_time_cpu_state();
+    // println!("{}", super::super::watch::watch_disk::output_get_disk_state());
+    // super::super::watch::watch_cpu::split_from_res_date_time_cpu_state();
 }
 
 fn get_only_sqlurl() -> String {
