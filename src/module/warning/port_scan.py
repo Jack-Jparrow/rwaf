@@ -35,6 +35,7 @@ def scan():
 if __name__ == "__main__":
     # host = sys.argv[1] #作为参数写入
     # thread_num = sys.argv[2]
+    #host = '47.94.106.197'
     host = '127.0.0.1'
     thread_num = 100
     q = queue.Queue()

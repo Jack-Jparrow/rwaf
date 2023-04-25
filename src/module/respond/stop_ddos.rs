@@ -28,7 +28,7 @@ pub fn stop_ddos_main() {
 }
 
 fn stop_ddos() {
-    let black_count_max = 2; //设置阈值
+    let black_count_max = 4; //设置阈值
     let black_res_init = check_tcp_num();
     let black_res_init_rev = reverse(&black_res_init);
     let black_count: i32 = reverse(&get_count(&black_res_init_rev).to_string().trim())

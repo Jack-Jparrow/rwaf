@@ -25,7 +25,7 @@ pub fn start_make_restore() {
         + &src_path
         + &" "
         + &dst_path;
-    // let fin_shell = "scp -r root@129.226.211.132:/home/lighthouse/pwn /home/jack/Desktop/pwm".to_string();
+    // println!("start {}", &fin_shell);
 
     // println!("{}", make_restore(fin_shell));
     let binding = get_date_time();
@@ -44,6 +44,7 @@ pub fn start_make_restore() {
 }
 
 fn make_restore(fin_shell: String) {
+    // println!("{}", &fin_shell);
     let mut command = execute::shell(fin_shell);
     // let output = Command::new("echo").args(["123".to_string()]).output().unwrap();
 
@@ -55,6 +56,7 @@ fn make_restore(fin_shell: String) {
             println!("Process terminated");
         }
     }
+    // println!("done");
     // let res = String::from_utf8(output.stdout).unwrap();
 
     // res.trim().to_string()
@@ -83,6 +85,7 @@ fn get_only_dst_path() -> String {
     let binding5 = binding4.to_string();
     let real_res_tmp = get_needed_thing(&binding5); //get dst_path
 
+    // println!("{}", &real_res_tmp);
     real_res_tmp.to_string()
 }
 
@@ -137,6 +140,7 @@ fn get_only_src_path() -> String {
     let binding5 = binding4.to_string();
     let real_res_tmp = get_needed_thing(&binding5); //get src_path
 
+    // println!("{}", &real_res_tmp);
     real_res_tmp.to_string()
 }
 

