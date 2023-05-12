@@ -1,7 +1,7 @@
 //! @Author       : 白银
 //! @Date         : 2023-01-11 20:42:38
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-04-25 17:37:23
+//! @LastEditTime : 2023-05-12 14:19:02
 //! @FilePath     : /rwaf/src/main.rs
 //! @Description  :
 //! @Attention    :
@@ -10,7 +10,7 @@
 use std::{
     env,
     fs::{self, File},
-    process, thread,
+    process, thread, time::Duration,
 };
 
 use daemonize::Daemonize;
@@ -29,6 +29,15 @@ fn main() {
     println!(r"'--------------'  '--------------'  '--------------'  '--------------'  beta v1.0");
     println!("");
 
+    // let download_latest_ip_tables = thread::spawn(|| module::respond::chekc_ip::download_latest_ip_tables::download_latest_ip_tables_main().unwrap());
+    // download_latest_ip_tables.join().unwrap();
+    // module::respond::chekc_ip::download_latest_ip_tables::download_latest_ip_tables_main();
+    thread::spawn(|| {
+        loop {
+            module::respond::chekc_ip::download_latest_ip_tables::download_latest_ip_tables_main().unwrap();
+            thread::sleep(Duration::from_secs(86400)); // 控制每24小时执行一次
+        }
+    });
     let args: Vec<String> = env::args().collect();
     let query0 = &args.clone()[0];
     // println!("********");
@@ -50,7 +59,7 @@ fn main() {
                     use_daemonize();
                     // println!("{}", get_only_pid());
                     // println!("123");
-                }
+                },
                 "-sys" => module::protect::show_watch_res::show_watch_res_main(),
                 "-de" => {
                     let _step_3 = thread::spawn(|| {
