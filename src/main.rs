@@ -1,7 +1,7 @@
 //! @Author       : 白银
 //! @Date         : 2023-01-11 20:42:38
 //! @LastEditors  : 白银
-//! @LastEditTime : 2023-05-12 14:19:02
+//! @LastEditTime : 2023-05-15 17:22:21
 //! @FilePath     : /rwaf/src/main.rs
 //! @Description  :
 //! @Attention    :
@@ -32,12 +32,13 @@ fn main() {
     // let download_latest_ip_tables = thread::spawn(|| module::respond::chekc_ip::download_latest_ip_tables::download_latest_ip_tables_main().unwrap());
     // download_latest_ip_tables.join().unwrap();
     // module::respond::chekc_ip::download_latest_ip_tables::download_latest_ip_tables_main();
-    thread::spawn(|| {
+    let aa = thread::spawn(|| {
         loop {
             module::respond::chekc_ip::download_latest_ip_tables::download_latest_ip_tables_main().unwrap();
             thread::sleep(Duration::from_secs(86400)); // 控制每24小时执行一次
         }
     });
+    aa.join().unwrap();
     let args: Vec<String> = env::args().collect();
     let query0 = &args.clone()[0];
     // println!("********");
@@ -126,6 +127,12 @@ fn use_daemonize() {
 }
 
 fn run_by_daemonize() {
+    let _step_0 = thread::spawn(|| {
+        loop {
+            module::respond::chekc_ip::download_latest_ip_tables::download_latest_ip_tables_main().unwrap();
+            thread::sleep(Duration::from_secs(86400)); // 控制每24小时执行一次
+        }
+    });
     // println!("{}", get_only_pid());
     let _step_2 = thread::spawn(|| module::protect::show_watch_res::show_watch_res_main());
     // _step_2.join();

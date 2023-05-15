@@ -3,7 +3,7 @@
 //! @LastEditors  : 白银
 //! @LastEditTime : 2023-05-12 15:22:15
 //! @FilePath     : /rwaf/src/module/respond/chekc_ip/download_latest_ip_tables.rs
-//! @Description  :
+//! @Description  : 从APNIC获得IP地址分配表 Get IP address allocation table from APNIC
 //! @Attention    :
 //! @Copyright (c) 2023 by 白银 captain-jparrow@qq.com, All Rights Reserved.
 
@@ -100,9 +100,9 @@ fn delete_previous_files(date: &str) -> Result<(), Box<dyn Error>> {
 fn update_cn_ip_files() -> Result<(), Box<dyn Error>> {
     // 获取前一天和前两天的日期 Get the date of the previous day and the day before that
     let prev_day = chrono::Utc::now() - chrono::Duration::days(1);
-    // println!("prev_day-----{}", &prev_day.format("%Y%m%d"));
+    println!("prev_day-----{}", &prev_day.format("%Y%m%d"));
     let prev_prev_day = prev_day - chrono::Duration::days(1);
-    // println!("prev_prev_day-----{}", &prev_prev_day.format("%Y%m%d"));
+    println!("prev_prev_day-----{}", &prev_prev_day.format("%Y%m%d"));
 
     // 下载并提取最新的IP地址分配表（日期为前一天） Download and extract the latest IP address allocation table (from the day before)
     match download_and_extract_file(&prev_day.format("%Y%m%d").to_string()) {
